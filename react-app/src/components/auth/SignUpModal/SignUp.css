@@ -90,6 +90,7 @@
 
   .signup-login-button{
     text-decoration: underline;
+    margin-left: 0.4rem;
   }
   .signup-login-button:hover{
     color: orange;
