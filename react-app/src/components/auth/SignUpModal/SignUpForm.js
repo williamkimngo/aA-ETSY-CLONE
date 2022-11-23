@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { signUp } from '../../../store/session';
 import LoginForm from '../LoginModal/LoginForm';
+import * as sessionActions from '../../../store/session'
 import './SignUp.css';
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -10,41 +11,20 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [firstName, setfirstName] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setconfirmPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
   const [showSignIn, setShowSignIn] = useState(false);
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      const data = await dispatch(signUp(firstName, username, email, password));
+    if (password === repeatPassword) {
+      const data = await dispatch(sessionActions.signUp(firstName, username, email, password));
       if (data) {
         setErrors(data)
       }
     } else {
-      setErrors(["Please Confirm Password"])
+      setErrors(["Please Confirm both passwords are identical"])
     }
   };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatefirstName = (e) => {
-    setfirstName(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateconfirmPassword = (e) => {
-    setconfirmPassword(e.target.value);
-  };
-
   const handleLogin =(e) =>{
     setShowSignIn(true);
   }
@@ -70,7 +50,7 @@ const SignUpForm = () => {
           className="signup-input"
           type='text'
           name='username'
-          onChange={updateUsername}
+          onChange={(e) => setUsername(e.target.value)}
           value={username}
         ></input>
       </div>
@@ -80,7 +60,7 @@ const SignUpForm = () => {
           className="signup-input"
           type='text'
           name='email'
-          onChange={updateEmail}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
         ></input>
       </div>
@@ -90,7 +70,7 @@ const SignUpForm = () => {
           className="signup-input"
           type='text'
           name='email'
-          onChange={updatefirstName}
+          onChange={(e) => setfirstName(e.target.value)}
           value={firstName}
         ></input>
       </div>
@@ -100,7 +80,7 @@ const SignUpForm = () => {
           className="signup-input"
           type='password'
           name='password'
-          onChange={updatePassword}
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         ></input>
       </div>
@@ -110,8 +90,8 @@ const SignUpForm = () => {
           className="signup-input"
           type='password'
           name='confirm_password'
-          onChange={updateconfirmPassword}
-          value={confirmPassword}
+          onChange={(e) => setRepeatPassword(e.target.value)}
+          value={repeatPassword}
 
         ></input>
       </div>
