@@ -10,16 +10,7 @@ product_routes = Blueprint('products', __name__)
 @product_routes.route('/')
 def get_products():
     products = Product.query.all()
-    products_result = []
-
-    if products is not None:
-        for product in products:
-            product = product.to_dict()
-            product_id = product["id"]
-            product['quantity'] = str(product['quantity'])
-
-            products_result.append(product)
-        return jsonify({"Products": products_result}), 200
+    return {product.id: product.to_dict() for product in products}
 
 @product_routes.route("/<int:product_id>")
 def product_details(product_id):
@@ -67,5 +58,3 @@ def create_product():
         return data.to_dict(), 201
     else:
         return {"errors": validation_errors_to_error_messages(form.errors)}, 401
-
-    
