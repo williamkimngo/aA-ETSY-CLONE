@@ -127,12 +127,12 @@ const SignUpForm = () => {
           name='confirm_password'
           onChange={updateconfirmPassword}
           value={confirmPassword}
-          
+
         ></input>
       </div>
       <div className='signIn-account-message'>
         Already have an account?
-        <span className='signup-login-button' onClick={() => handleLogin()}>  Login</span>
+        <span className='signup-login-button' onClick={() => handleLogin()}>Login</span>
       </div>
       <div className='signup-buttons-outer'>
       <button className="signup-form-button" type='submit'>Register</button>
