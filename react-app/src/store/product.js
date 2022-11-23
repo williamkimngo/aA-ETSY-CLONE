@@ -52,7 +52,7 @@ export const fetchAllProducts = () => async (dispatch) => {
     }
 }
 
-export const fetchSingleProduct = () => async (dispatch) => {
+export const fetchSingleProduct = (productId) => async (dispatch) => {
     const response = await fetch(`/api/products/${productId}`);
 
     if (response.ok) {
