@@ -9,7 +9,6 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setfirstName] = useState('');
-  const [lastName, setlastName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [showSignIn, setShowSignIn] = useState(false);
@@ -17,7 +16,7 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      const data = await dispatch(signUp(firstName, lastName, username, email, password));
+      const data = await dispatch(signUp(firstName, username, email, password));
       if (data) {
         setErrors(data)
       }
@@ -36,10 +35,6 @@ const SignUpForm = () => {
 
   const updatefirstName = (e) => {
     setfirstName(e.target.value);
-  };
-
-  const updatelastName = (e) => {
-    setlastName(e.target.value);
   };
 
   const updatePassword = (e) => {
@@ -97,16 +92,6 @@ const SignUpForm = () => {
           name='email'
           onChange={updatefirstName}
           value={firstName}
-        ></input>
-      </div>
-      <div className="signup-field-outer">
-      <label className="signup-label">Last Name *</label>
-        <input
-          className="signup-input"
-          type='text'
-          name='email'
-          onChange={updatelastName}
-          value={lastName}
         ></input>
       </div>
       <div className="signup-field-outer">

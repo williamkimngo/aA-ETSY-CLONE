@@ -7,7 +7,7 @@ import './NavBar.css';
 import SearchBar from './SearchBar';
 
 const NavBar = () => {
-    const user = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
 
     return (
         <nav>
@@ -16,17 +16,17 @@ const NavBar = () => {
                     <div className='navBar-link'>
                         <NavLink exact to="/" activeClassName='active'>
                             <div className='navBar-home'>
-                                <img src="https://i.imgur.com/G4xDlfp.jpg" alt="logo" className="logo" />
+                                <img src="https://i.imgur.com/764zj91.jpg" alt="logo" className="logo" />
                             </div>
                         </NavLink>
                     </div>
                     <SearchBar />
-                    {user ?
+                    {sessionUser ?
                         <>
                             <div className='navBar-link-icon'>
                             </div>
                             <div className='navBar-link-profile'>
-                                <ProfileButton user={user} />
+                                <ProfileButton user={sessionUser} />
                             </div>
                         </>
                         :
