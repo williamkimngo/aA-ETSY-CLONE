@@ -24,15 +24,7 @@ const LoginForm = () => {
     setErrors([])
   }
 
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSignup = (e) => {
+  const SignupTransition = (e) => {
     setShowSignup(true)
   }
 
@@ -44,7 +36,7 @@ const LoginForm = () => {
       <div className='login-form-main'>
       <div className="login-top">
       <div className="login-title">Sign In</div>
-      <div className='login-register-button' onClick={() => handleSignup()}>Register</div>
+      <div className='login-register-button' onClick={() => SignupTransition()}>Register</div>
       </div>
       <form onSubmit={onLogin}>
         <div className="login-error">
@@ -60,7 +52,7 @@ const LoginForm = () => {
             type='text'
             placeholder='Email'
             value={email}
-            onChange={updateEmail}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="login-field-outer">
@@ -71,7 +63,7 @@ const LoginForm = () => {
             type='password'
             placeholder='Password'
             value={password}
-            onChange={updatePassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
           <div className='login-buttons-outer'>

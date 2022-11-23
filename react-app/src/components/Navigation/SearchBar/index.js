@@ -5,22 +5,16 @@ import './searchBar.css'
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
 
-
-
   const handleSearch = async (e) => {
     e.preventDefault()
     if (keyword.trim().length === 0) {
-
       return
     }
-
     setKeyword("")
-
   }
-
   return (
     <div className='searchBar-main'>
-     
+
       <div className='navBar-searchBar-container'>
         <form onSubmit={handleSearch} className="searchBar-form">
           <input
