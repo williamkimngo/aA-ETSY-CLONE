@@ -3,6 +3,7 @@ const GET_ONE_PRODUCT = 'products/getoneproduct'
 const CREATE_PRODUCT = 'products/createproduct'
 const EDIT_PRODUCT = 'products/editproduct'
 const DELETE_PRODUCT = 'products/deleteproduct'
+const ADD_IMG = 'products/addimg'
 
 //actions
 const getProducts = (products) => {
@@ -40,63 +41,85 @@ const deleteProduct = (productId) => {
     }
 }
 
+const addImg = (img) => {
+    return {
+        type: ADD_IMG,
+        img
+    }
+}
 
 // Thunks
 export const fetchAllProducts = () => async (dispatch) => {
-    const response = await fetch('/api/products');
+    const res = await fetch('/api/products');
 
-    if (response.ok) {
-        const data = await response.json();
+    if (res.ok) {
+        const data = await res.json();
         dispatch(getProducts(data))
         return data
     }
 }
 
 export const fetchSingleProduct = (productId) => async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}`);
+    const res = await fetch(`/api/products/${productId}`);
 
-    if (response.ok) {
-        const data = await response.json();
+    if (res.ok) {
+        const data = await res.json();
         dispatch(getOneProduct(data))
         return data
     }
 }
 
 export const addProduct = (product) => async (dispatch) => {
-    const response = await fetch("/api/products", {
+    const res = await fetch("/api/products", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product)
     })
 
-    if (response.ok) {
-        const data = await response.json();
+    if (res.ok) {
+        const data = await res.json();
         dispatch(createProduct(data))
         return data
     }
 }
 
 export const editSingleProduct = (product, productId) => async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}`, {
+    const res = await fetch(`/api/products/${productId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
     })
 
-    if(response.ok) {
-        const data = await response.json()
+    if(res.ok) {
+        const data = await res.json()
         dispatch(editProduct(data))
         return data
     }
 }
 
 export const deleteSingleProduct = (productId) => async (dispatch) => {
-    const response = await fetch(`/api/products/${productId}`, {
+    const res = await fetch(`/api/products/${productId}`, {
         method: "DELETE"
     })
 
-    if(response){
+    if(res){
         dispatch(deleteProduct(productId))
+    }
+}
+
+export const fetchImg = (url, productId) => async (dispatch) => {
+    const res = await fetch(`/api/products/${productId}/images`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+            },
+        body: JSON.stringify({url: url})
+    })
+
+    if (res.ok){
+        const data = await res.json();
+        dispatch(addImg(data))
+        return data
     }
 }
 
@@ -111,10 +134,10 @@ const productReducer = (state = initialState, action) => {
         case GET_PRODUCTS:
             newState = {...state, allProducts: {...state.allProducts}}
             action.products.Products.forEach(product => {
-                newState.allProducts[product.id] = product
+                newState.allProducts[product.id] = product;
             })
             newState.singleProduct={}
-            return newState;
+            return newState
         case GET_ONE_PRODUCT:
             newState = { ...state, singleProduct: { ...action.product } };
             return newState;
@@ -130,6 +153,9 @@ const productReducer = (state = initialState, action) => {
             newState.singleProduct = {...state.singleProduct}
             delete newState.allProducts[action.productId]
             if (newState.singleProduct.id === action.productId) newState.singleProduct = {}
+            return newState
+        case ADD_IMG:
+            newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
             return newState
         default:
             return state

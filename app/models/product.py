@@ -17,16 +17,15 @@ class Product(db.Model):
     quantity = db.Column(db.Integer, nullable=False)
 
     user = db.relationship("User", back_populates="products")
+    images = db.relationship("Image", back_populates="product", cascade="all, delete")
 
     def to_dict(self):
         return {
             'id': self.id,
             'sellerId': self.seller_id,
             'name': self.name,
-            'details': self.description,
+            'details': self.details,
             'price': self.price,
-            'category': self.price,
-            'quantity': self.stock
+            'category': self.category,
+            'quantity': self.quantity
         }
-
-    
