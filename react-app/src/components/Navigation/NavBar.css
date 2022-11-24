@@ -89,4 +89,5 @@ nav {
 
 .cart-pic:hover .cartbubble {
   visibility: visible;
+  z-index: 3;
 }
