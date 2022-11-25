@@ -14,7 +14,8 @@ const ProductHome = () => {
     const orangeProducts = productsArr.filter(product => product.category === "Orange")
     const limeProducts = productsArr.filter(product => product.category === "Lime")
     const grapeFruitProducts = productsArr.filter(product => product.category === "Grapefruit")
-
+    const randomProducts = productsArr.sort(() => 0.5 - Math.random())
+    const mainDisplayProducts = randomProducts.slice(0,8) // 8 photos, index starts at 0, slice ends at number prior to end number
 
     useEffect(() => {
         dispatch(fetchAllProducts(objProducts))
@@ -72,7 +73,7 @@ const ProductHome = () => {
                     </div>
                 </div>
                 <div className='display-product-main'>
-                    {productsArr?.map((product, i) => {
+                    {mainDisplayProducts?.map((product, i) => {
                         return (
                             <div className={`display-product-outer img${i}`}>
                                 <NavLink to={`/products/${product.id}`}>

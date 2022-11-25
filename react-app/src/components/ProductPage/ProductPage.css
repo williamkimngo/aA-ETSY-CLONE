@@ -1,0 +1,242 @@
+.product-container {
+    display: flex;
+    margin: 1.5rem auto;
+    justify-content: center;
+}
+
+.left-product-container {
+    display: flex;
+    flex-direction: column;
+    width: 665px;
+    padding: 0 1.5rem;
+}
+
+.img-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 1rem;
+}
+
+.small-img-container {
+    width: 60px;
+    height: 55px;
+}
+
+.small-picture {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 4px;
+}
+
+.small-picture:hover {
+    cursor: pointer;
+    border: 1px solid rgb(195, 194, 194);
+    box-shadow: 0 0 8px #bdbdbd;
+}
+
+.big-img-container {
+    width: 35rem;
+  height: 30rem;
+  margin: 0 8px;
+}
+
+.big-image {
+    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+
+.product-right-part {
+    display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
+  position: relative;
+  box-sizing: border-box;
+  width: 580px;
+}
+
+.single-product-seller{
+    /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
+  }
+  .single-product-sales{
+  /* font-family: GraphikLight, Arial, Helvetica, sans-serif; */
+    font-size: 0.9rem;
+    padding: 0 0.3rem 1rem 0;
+  }
+  .vertical-seperate{
+    opacity: 0.4;
+    padding-left: .5rem
+  }
+  .single-product-name{
+    /* font-family:'Courier New', Courier, monospace; */
+    /* font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif; */
+    font-size: 26px;
+    font-weight: 500;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    width: 550px;
+    line-height: 32px;
+  }
+  .single-product-price{
+    margin-top: 1rem;
+    font-size: 1.4rem;
+    /* font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif; */
+    font-weight: bolder;
+  }
+  /* ##########stock, cart,description,############### */
+  .single-product-stock{
+    margin-top: 50px
+  }
+  .single-product-quantity{
+    /* position: relative; */
+    margin-top: 7px;
+    width: stretch;
+    height: fit-content;
+
+
+  }
+  .product-input-quantity{
+
+    width: 500px;
+    height: 3em;
+    border: 1px solid rgb(195, 194, 194);
+    box-shadow: 0 0 5px #bdbdbd;
+    border-radius: .3em;
+    padding-left: .5em;
+  }
+  .product-input-quantity:hover{
+      cursor: pointer;
+      border: 1px solid black;
+      box-shadow: 2px 2px 2px grey;
+
+  }
+  .add-to-cart-button{
+    cursor: pointer;
+    width: 500px;
+    height: 44px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
+    font-size: 16px;
+    margin-top: 30px;
+    margin-bottom: 16px;
+  }
+  .add-to-cart-button:hover{
+    transform:scale(1.06,1.06);
+  }
+  .not-login-addtocart-button{
+    cursor: not-allowed;
+    color: grey;
+    width: 500px;
+    height: 44px;
+    font-size: 16px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+  }
+
+  .single-product-description{
+  /* font-family:'Courier New', Courier, monospace; */
+  margin-bottom: 10px;
+  font-weight: 800;
+  margin-top: 30px;
+
+  }
+  .single-product-description-content{
+    width:100%;
+    font-weight: 500;
+    /* font-family:'Courier New', Courier, monospace */
+  }
+
+  .product-detail-gift,
+  .product-detail-award,
+  .product-detail-truck
+   {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px
+  }
+
+  .product-detail-gift {
+    margin-top: 10px;
+  }
+  .product-detail-award .product-detail-text{
+    margin-left: 15px;
+  }
+  .fa-award{
+    margin-left: 5px;
+  }
+  .product-detail-truck .product-detail-text{
+    margin-left: 5px;
+  }
+  .product-detail-gift .product-detail-text{
+    margin-left: 11px;
+  }
+  .fa-gift{
+    margin-left: 2px;
+  }
+  .fa-gift,
+  .fa-award,
+  .fa-truck-fast{
+   color: navy;
+   padding-right: 5px;
+  }
+  .product-detail-text{
+    font-size: 14px
+  }
+
+  .ajw{
+    font-weight: bold;
+    font-size: 15px
+  }
+  .single-product-shipping{
+
+    font-weight: 800;
+    margin-top: 30px;
+    margin-bottom: -6px;
+
+    }
+
+  .free-shipping {
+    font-size: 25pt;
+    padding: 15px 0;
+    margin-bottom: 5px;
+  }
+
+  .free-shipping-message {
+    border: 20px solid rgb(225, 235, 228);
+    border-radius: 10px;
+    background-color: rgb(225, 235, 228);
+    width: 450px;
+    padding: 1px 8px;
+    margin-bottom: 25px;
+  }
+
+  .return-exchange-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 65px
+  }
+  .return-exchange-smalltext {
+    font-size: 10pt;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: grey;
+  }
+
+  .return-exchange-bigtext {
+    font-size: 20pt;
+  }
