@@ -104,27 +104,19 @@ const ProductPage = () => {
                               </button>
                 : <button className="not-login-addtocart-button">Please log in to purchase</button>
                 } */}
-        <div className="product-detail-gift">
-            <i className="fa-solid fa-gift fa-2xl"></i>
-            <div className="product-detail-text">
-              <span className="ajw">A sought-after gift</span>
-              {/* -over 20 people have this in their carts
-              right now. */}
-            </div>
-          </div>
+
           <div className="product-detail-award">
             <i className="fa-solid fa-award fa-2xl"></i>
             <div className="product-detail-text">
-              <span className="ajw">Star Seller.&nbsp;</span>This seller consistently earned 5-star reviews,
+              <span className="ajw">Star Seller.</span> This seller consistently earned 5-star reviews,
               shipped on time, and replied quickly to any messages they
               received.
             </div>
           </div>
           <div className="product-detail-truck">
-          <i className="fa-solid fa-truck-fast fa-2xl"></i>
+          <i className="fa-solid fa-truck fa-2xl"></i>
             <div className="product-detail-text">
-              <span className="ajw">Hooray!&nbsp;</span>This item ships
-              free to the US.
+              <span className="ajw">Hooray!</span> This item ships free to the US.
             </div>
           </div>
 
@@ -132,30 +124,10 @@ const ProductPage = () => {
                 <div className="single-product-description">Description</div>
                 <div className="single-product-description-content"> {currentProduct?.details}</div>
                 <div className="single-product-shipping">Cost to ship</div>
-          <div className="free-shipping">Free</div>
+          <div className="free-shipping">$5.00</div>
           <div className="free-shipping-message">
             Zesty offsets carbon emissions from shipping and packaging on this
             purchase.
-          </div>
-          <div className="return-exchange-div">
-            <div>
-              <div className="return-exchange-smalltext">
-                Returns & exchanges
-              </div>
-              <div className="return-exchange-bigtext">Accepted</div>
-              <div className="return-exchange-smalltext">
-                Exceptions may apply
-              </div>
-            </div>
-            <div>
-              <div className="return-exchange-smalltext">
-                Return & exchange window
-              </div>
-              <div className="return-exchange-bigtext">30 days</div>
-              <div className="return-exchange-smalltext">
-                from item delivery
-              </div>
-            </div>
           </div>
             </div>
 

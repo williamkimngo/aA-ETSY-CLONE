@@ -157,7 +157,6 @@
     /* font-family:'Courier New', Courier, monospace */
   }
 
-  .product-detail-gift,
   .product-detail-award,
   .product-detail-truck
    {
@@ -169,9 +168,6 @@
     padding-bottom: 15px
   }
 
-  .product-detail-gift {
-    margin-top: 10px;
-  }
   .product-detail-award .product-detail-text{
     margin-left: 15px;
   }
@@ -181,16 +177,10 @@
   .product-detail-truck .product-detail-text{
     margin-left: 5px;
   }
-  .product-detail-gift .product-detail-text{
-    margin-left: 11px;
-  }
-  .fa-gift{
-    margin-left: 2px;
-  }
-  .fa-gift,
+
   .fa-award,
-  .fa-truck-fast{
-   color: navy;
+  .fa-truck{
+   color: rgb(10, 10, 20);
    padding-right: 5px;
   }
   .product-detail-text{
@@ -222,21 +212,4 @@
     width: 450px;
     padding: 1px 8px;
     margin-bottom: 25px;
-  }
-
-  .return-exchange-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 65px
-  }
-  .return-exchange-smalltext {
-    font-size: 10pt;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    color: grey;
-  }
-
-  .return-exchange-bigtext {
-    font-size: 20pt;
   }
