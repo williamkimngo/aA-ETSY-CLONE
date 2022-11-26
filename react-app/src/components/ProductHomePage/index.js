@@ -15,7 +15,8 @@ const ProductHome = () => {
     const limeProducts = productsArr.filter(product => product.category === "Lime")
     const grapeFruitProducts = productsArr.filter(product => product.category === "Grapefruit")
     const randomProducts = productsArr.sort(() => 0.5 - Math.random())
-    const mainDisplayProducts = randomProducts.slice(0,8) // 8 photos, index starts at 0, slice ends at number prior to end number
+    const mainDisplayProducts = randomProducts.slice(0, 8) // 8 photos, index starts at 0, slice ends at number prior to end number
+    const sponsoredDisplayProducts = randomProducts.slice(0, 6)
 
     useEffect(() => {
         dispatch(fetchAllProducts(objProducts))
@@ -85,6 +86,22 @@ const ProductHome = () => {
                             </div>
                         )
                     })}
+                </div>
+                <div className='display-product-main'>
+                    <div className='sponsored-message'>Sponsored<span className='sponsored-seller-message'>By Zesty sellers</span></div>
+                    {sponsoredDisplayProducts?.map((product, i) => {
+                        return (
+                            <div className={`display-product-outer img${i}`}>
+                                <NavLink to={`/products/${product.id}`}>
+                                    <div className='display-img-outer'>
+                                        <img src={product.previewImage} className={`display-product-img img${i}`} alt={product.id} />
+                                    </div>
+                                    <div className='display-product-price'>${parseFloat(product.price).toFixed(2)}</div>
+                                </NavLink>
+                            </div>
+                        )
+                    })}
+                    <div className='fun-fact'>Fun fact: behind every sponsored item there is an Etsy seller hoping you'll check out their shop</div>
                 </div>
             </div>
         </div>

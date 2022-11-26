@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, Product, User, Image
-from app.forms import ProductForm, ImageForm
+from app.models import db, Product, User, Image, Review, Cart
+from app.forms import ProductForm, ImageForm, ReviewForm, CartForm
+from datetime import datetime
 import random
 from .auth_routes import validation_errors_to_error_messages
 
@@ -24,7 +25,7 @@ def get_products():
             product['price'] = str(product['price'])
 
             products_result.append(product)
-            
+
             print(products_result, "RESULT????????!@!#!@#!@!@#??")
     return jsonify({"Products": products_result}), 200
 
@@ -33,10 +34,25 @@ def get_products():
 def product_details(product_id):
     product = Product.query.get(product_id)
     images = Image.query.filter(Image.product_id == product_id).all()
+    reviews = Review.query.filter(Review.product_id == product_id).all()
     seller = ""
     if product:
         user_id = product.seller_id
         seller = User.query.get(user_id)
+
+    if reviews:
+      numReviews = len(reviews)
+      total_ratings = 0
+      list_of_reviewers = []
+      for review in reviews:
+        total_ratings += review.to_dict()["ratings"]
+        list_of_reviewers.append(review.user_id)
+      avgRating = total_ratings / numReviews
+
+    else:
+      numReviews = 0
+      avgRating = 0
+      list_of_reviewers = []
 
     if product:
         product_details = []
@@ -137,3 +153,113 @@ def delete_product(product_id):
     db.session.commit()
 
     return {"message": "Successfully deleted"}
+
+@product_routes.route("/account")
+@login_required
+def get_my_products():
+  user_id = current_user.id
+  products = Product.query.filter(Product.seller_id == user_id).all()
+
+  products_result = []
+
+  if products is not None:
+    for product in products:
+      product = product.to_dict()
+
+      product_id = product["id"]
+      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
+      if preview_img is not None:
+        product["previewImage"] = preview_img.url
+
+      product['price'] = str(product['price'])
+
+      productreviews = Review.query.filter(Review.product_id == product_id).all()
+      if productreviews:
+        numReviews = len(productreviews)
+        total_rating = 0
+        for review in productreviews:
+          total_rating += review.to_dict()["rating"]
+        avgRating = total_rating / numReviews
+        product['avgRating'] = avgRating
+
+      products_result.append(product)
+
+    return jsonify({"Products": products_result}), 200
+
+@product_routes.route("/<int:product_id>/reviews", methods=["POST"])
+@login_required
+def create_review(product_id):
+  form = ReviewForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+  product = Product.query.get(product_id)
+  if product is None:
+    return {"errors": "Product couldn't be found"}, 404
+  if product.seller_id == current_user.id:
+    return {"errors": "You can't review your own product"}, 400
+  existed_reviews = Review.query.filter(Review.product_id == product_id).all()
+  if existed_reviews:
+    for review in existed_reviews:
+      if review.user_id == current_user.id:
+        return {"errors": "You have already left a review for this product"}, 400
+  if form.validate_on_submit():
+    new_review = Review(
+      user_id = current_user.id,
+      product_id = product_id,
+      review = form.data["review"],
+      ratings = form.data["ratings"],
+      created_at = datetime.now()
+    )
+    db.session.add(new_review)
+    db.session.commit()
+    return new_review.to_dict(), 201
+  else:
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+@product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
+@login_required
+def create_cart_item(product_id):
+  print(f"-------111BACKEND STARTS-------product id: {product_id}")
+  item = Product.query.get(product_id)
+  print(f"-------222BACKEND -------item: {item}")
+  print(f"-------222BACKEND -------item.seller_id: {item.seller_id}")
+  print(f"-------222BACKEND -------current_user.id: {current_user.id}")
+  cart = db.session.query(Cart) \
+                            .filter(Cart.user_id == current_user.id) \
+                            .filter(Cart.product_id == product_id) \
+                            .filter(Cart.order_id == 0)\
+                            .first()
+
+  form = CartForm()
+  form["csrf_token"].data = request.cookies["csrf_token"]
+
+  if not item:
+    return {"errors" : "Product couldn't be found"}, 404
+  if item.seller_id == current_user.id:
+    return {"errors" : "You can not add your own product to cart"}, 400
+
+  print(f"-------444BACKEND -------before form.validate_on_submit")
+
+  if form.validate_on_submit():
+    if not cart:
+      data = Cart(
+        user_id = current_user.id,
+        product_id = product_id,
+        quantity = form.data["quantity"],
+        order_id = 0
+      )
+      db.session.add(data)
+      db.session.commit()
+      return data.to_dict_current(), 200
+    else:
+      if cart.quantity + form.data["quantity"] > cart.product.quantity:
+        cart.quantity = cart.product.quantity
+        cart.message = "You have reached the maximum quantity for this product."
+        db.session.commit()
+        return cart.to_dict_current(), 200
+      else:
+        cart.quantity += form.data["quantity"]
+        db.session.commit()
+        return cart.to_dict_current(), 200
+  else:
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
