@@ -87,21 +87,23 @@ const ProductHome = () => {
                         )
                     })}
                 </div>
-                <div className='display-product-main'>
+                <div className='sponsored-product-main'>
+                    <div className='sponsored-outer-container'>
                     <div className='sponsored-message'>Sponsored<span className='sponsored-seller-message'>By Zesty sellers</span></div>
                     {sponsoredDisplayProducts?.map((product, i) => {
                         return (
-                            <div className={`display-product-outer img${i}`}>
+                            <div className={`sponsored-product-outer image${i}`}>
                                 <NavLink to={`/products/${product.id}`}>
-                                    <div className='display-img-outer'>
-                                        <img src={product.previewImage} className={`display-product-img img${i}`} alt={product.id} />
+                                    <div className='sponsored-img-outer'>
+                                        <img src={product.previewImage} className={`sponsored-product-img image${i}`} alt={product.id} />
                                     </div>
-                                    <div className='display-product-price'>${parseFloat(product.price).toFixed(2)}</div>
+                                    <div className='sponsor-product-price'>${parseFloat(product.price).toFixed(2)}</div>
                                 </NavLink>
                             </div>
                         )
                     })}
-                    <div className='fun-fact'>Fun fact: behind every sponsored item there is an Etsy seller hoping you'll check out their shop</div>
+                    <div className='fun-fact'>Fun fact: behind every sponsored item there is an Zesty seller hoping you'll check out their shop</div>
+                    </div>
                 </div>
             </div>
         </div>
