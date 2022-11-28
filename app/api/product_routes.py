@@ -30,6 +30,38 @@ def get_products():
     return jsonify({"Products": products_result}), 200
 
 
+@product_routes.route("/account")
+@login_required
+def get_my_products():
+  user_id = current_user.id
+  products = Product.query.filter(Product.seller_id == user_id).all()
+
+  products_result = []
+
+  if products is not None:
+    for product in products:
+      product = product.to_dict()
+
+      product_id = product["id"]
+      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
+      if preview_img is not None:
+        product["previewImage"] = preview_img.url
+
+      product['price'] = str(product['price'])
+
+      productreviews = Review.query.filter(Review.product_id == product_id).all()
+      if productreviews:
+        numReviews = len(productreviews)
+        total_rating = 0
+        for review in productreviews:
+          total_rating += review.to_dict()["rating"]
+        avgRating = total_rating / numReviews
+        product['avgRating'] = avgRating
+
+      products_result.append(product)
+
+    return jsonify({"Products": products_result}), 200
+
 @product_routes.route("/<int:product_id>")
 def product_details(product_id):
     product = Product.query.get(product_id)
@@ -60,8 +92,12 @@ def product_details(product_id):
         decimal_price = product["price"]
         str_price = str(round(decimal_price, 2))
         product["price"] = str_price
+        product["numReviews"] = numReviews
+        product["avgRating"] = avgRating
+        product["salesNumber"] = random.randint(1, 1000)
         product["productImages"] = [image.url for image in images]
         product["seller"] = seller.username
+        product["reviewers"] = list_of_reviewers
         product_details.append(product)
 
         return jsonify(product_details)
@@ -154,37 +190,25 @@ def delete_product(product_id):
 
     return {"message": "Successfully deleted"}
 
-@product_routes.route("/account")
-@login_required
-def get_my_products():
-  user_id = current_user.id
-  products = Product.query.filter(Product.seller_id == user_id).all()
 
-  products_result = []
 
-  if products is not None:
-    for product in products:
-      product = product.to_dict()
+@product_routes.route("/<int:product_id>/reviews")
+def get_product_reviews(product_id):
+  """
+  load all the reviews of a product by product_id
+  """
+  product = Product.query.get(product_id)
 
-      product_id = product["id"]
-      preview_img = db.session.query(Image).filter(Image.product_id == product_id).first()
-      if preview_img is not None:
-        product["previewImage"] = preview_img.url
+  if product is None:
+    return {"errors": "Product couldn't be found"}, 404
 
-      product['price'] = str(product['price'])
+  filtered_reviews = Review.query.filter(Review.product_id == product_id).all()
 
-      productreviews = Review.query.filter(Review.product_id == product_id).all()
-      if productreviews:
-        numReviews = len(productreviews)
-        total_rating = 0
-        for review in productreviews:
-          total_rating += review.to_dict()["rating"]
-        avgRating = total_rating / numReviews
-        product['avgRating'] = avgRating
+  if filtered_reviews is not None:
+    return {"Reviews": [review.to_dict()
+                        for review in filtered_reviews]}, 200
 
-      products_result.append(product)
 
-    return jsonify({"Products": products_result}), 200
 
 @product_routes.route("/<int:product_id>/reviews", methods=["POST"])
 @login_required

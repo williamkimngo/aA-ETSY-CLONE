@@ -10,6 +10,9 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import ProductHome from './components/ProductHomePage';
 import ProductPage from './components/ProductPage';
+import UserReviews from './components/Reviews/UserReviews';
+import CreateReviewForm from './components/Reviews/CreateReviewForm';
+import EditReviewForm from './components/Reviews/EditReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -41,6 +44,15 @@ function App() {
         </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
+        </Route>
+        <Route path='/products/:productId/new-review' exact={true} >
+          <CreateReviewForm />
+        </Route>
+        <Route path='/reviews/:reviewId/edit-review' exact={true} >
+          <EditReviewForm />
+        </Route>
+        <Route path='/my-reviews' exact={true} >
+          <UserReviews />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />

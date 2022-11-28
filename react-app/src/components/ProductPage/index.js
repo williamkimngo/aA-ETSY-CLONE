@@ -4,6 +4,8 @@ import { NavLink, useHistory, useParams } from 'react-router-dom';
 import './ProductPage.css'
 import { fetchSingleProduct } from '../../store/product';
 import { AiFillStar } from "react-icons/ai"
+import ProductReviews from '../Reviews/productReviews';
+import CreateReviewModal from '../Reviews/ReviewModal';
 
 const ProductPage = () => {
     const history = useHistory()
@@ -13,12 +15,17 @@ const ProductPage = () => {
     const currentProduct = useSelector(state => state.products.singleProduct)[0]
     const [chosenImg, setChosenImg] = useState(null)
     const [quantity, setQuantity] = useState(1)
+    const avgRating = currentProduct?.avgRating
+    const reviewsObj = useSelector(state => state.reviews.product)
+    console.log(reviewsObj, "REVIEWSTATE???")
+    const reviewsArr = Object.values(reviewsObj)
+    const [reviewModal, setReviewModal] = useState(false)
 
     let currentUser;
 
     useEffect(async () => {
         dispatch(fetchSingleProduct(productId))
-    }, [dispatch, productId])
+    }, [dispatch, productId, reviewsArr.length])
 
     let seller = false
     if (sessionUser?.id === currentProduct?.sellerId) {
@@ -57,16 +64,59 @@ const ProductPage = () => {
                             }
                         </div>
                     </div>
+                    <div className="single-product-reviews">
+           <div className="single-product-numReviews">{currentProduct?.numReviews} review(s)
+                <span className="product-detail-avgrating-star">
+                    {
+                    Number(currentProduct?.avgRating) % 1 ?
+                    <span>
+                        {[...Array(Math.floor(currentProduct?.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                        <i className="fa fa-star-half-o" aria-hidden="true"></i>
+                    </span>
+                    :
+                    <span>
+                        {[...Array(currentProduct?.avgRating)].map((star) => (<i className="fa-solid fa-star"></i>))}
+                    </span>
+                    }
+                </span>
+                </div>
+
+            {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
+            <div>
+                {
+                sessionUser &&
+                !seller &&
+                !currentProduct?.reviewers?.includes(sessionUser.id) &&
+                // (<div>
+                //     <button
+                //         className="create-new-review-button"
+                //         onClick={()=>history.push(`/products/${productId}/new-review`)}
+                //     >
+                //         Create a new review
+                //         {/* <CreateReviewForm productId={productId}/> */}
+                //     </button>
+                // </div>)
+                <CreateReviewModal
+                    productId={productId}
+                    showNewReviewModal={reviewModal}
+                    setShowNewReviewModal={setReviewModal}
+                />
+                }
+            </div>
+            <div className="one-spot-reviews-container">
+                <ProductReviews productId={productId} user={sessionUser}/>
+            </div>
+            </div>
                 </div>
                 <div className="product-right-part">
             <div className="single-product-seller">{currentProduct?.seller}</div>
-            <div className="single-product-sales">{currentProduct?.seller} sales  <span className="vertical-seperate">|</span>
-            {/* <span className="product-detail-avgrating-star">
+            <div className="single-product-sales">{currentProduct?.salesNumber} sales  <span className="vertical-seperate">|</span>
+            <span className="product-detail-avgrating-star">
             {
               currentProduct?.avgRating &&
               Number(currentProduct?.avgRating) % 1 ?
               <span>
-                {[...Array(Math.floor(currentProduct.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
+                {[...Array(Math.floor(currentProduct?.avgRating))].map((star) => (<i className="fa-solid fa-star"></i>))}
                 <i className="fa fa-star-half-o" aria-hidden="true"></i>
               </span>
               :
@@ -75,12 +125,12 @@ const ProductPage = () => {
               </span>
             }
             {
-              !currentProduct.avgRating &&
+              currentProduct?.avgRating &&
               <span>
               {[...Array(5)].map((star) => (<AiFillStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
               </span>
             }
-            </span> */}
+            </span>
             </div>
             <div className="single-product-name">{currentProduct?.name}</div>
 
