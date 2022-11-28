@@ -18,14 +18,11 @@ const ProductReviews = ({productId, user}) => {
         <>
         {productReviewsArr && productReviewsArr?.map(review => (
             <div className="single-review">
-            <div className="single-review-name" >{review.User.first_name}</div>
-            <div className="my-single-review-date">
-              {new Date(review?.createdAt).toString().slice(3,-42)}
-            </div>
+
 
             <div className="single-review-stars">
               {
-                [...Array(review?.stars)].map((star) => (<i className="fa-solid fa-star"></i>))
+                [...Array(review?.ratings)].map((star) => (<i className="fa-solid fa-star"></i>))
               }
             </div>
 
@@ -34,6 +31,12 @@ const ProductReviews = ({productId, user}) => {
                 {review?.review}
               </span>
             </p>
+            <div className="single-review-section">
+            <div className="single-review-name" >{review.User.first_name}</div>
+            <div className="my-single-review-date">
+              {new Date(review?.createdAt).toString().slice(3,-42)}
+            </div>
+            </div>
 
             {
               review?.userId==user?.id &&
