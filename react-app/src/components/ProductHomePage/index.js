@@ -14,7 +14,9 @@ const ProductHome = () => {
     const orangeProducts = productsArr.filter(product => product.category === "Orange")
     const limeProducts = productsArr.filter(product => product.category === "Lime")
     const grapeFruitProducts = productsArr.filter(product => product.category === "Grapefruit")
-
+    const randomProducts = productsArr.sort(() => 0.5 - Math.random())
+    const mainDisplayProducts = randomProducts.slice(0, 8) // 8 photos, index starts at 0, slice ends at number prior to end number
+    const sponsoredDisplayProducts = randomProducts.slice(0, 6)
 
     useEffect(() => {
         dispatch(fetchAllProducts(objProducts))
@@ -72,7 +74,7 @@ const ProductHome = () => {
                     </div>
                 </div>
                 <div className='display-product-main'>
-                    {productsArr?.map((product, i) => {
+                    {mainDisplayProducts?.map((product, i) => {
                         return (
                             <div className={`display-product-outer img${i}`}>
                                 <NavLink to={`/products/${product.id}`}>
@@ -84,6 +86,24 @@ const ProductHome = () => {
                             </div>
                         )
                     })}
+                </div>
+                <div className='sponsored-product-main'>
+                    <div className='sponsored-outer-container'>
+                    <div className='sponsored-message'>Sponsored<span className='sponsored-seller-message'>By Zesty sellers</span></div>
+                    {sponsoredDisplayProducts?.map((product, i) => {
+                        return (
+                            <div className={`sponsored-product-outer image${i}`}>
+                                <NavLink to={`/products/${product.id}`}>
+                                    <div className='sponsored-img-outer'>
+                                        <img src={product.previewImage} className={`sponsored-product-img image${i}`} alt={product.id} />
+                                    </div>
+                                    <div className='sponsor-product-price'>${parseFloat(product.price).toFixed(2)}</div>
+                                </NavLink>
+                            </div>
+                        )
+                    })}
+                    <div className='fun-fact'>Fun fact: behind every sponsored item there is an Zesty seller hoping you'll check out their shop</div>
+                    </div>
                 </div>
             </div>
         </div>

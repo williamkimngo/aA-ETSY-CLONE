@@ -5,6 +5,10 @@ def seed_images():
         url="https://i.imgur.com/Y6hhFdY.png",
         product_id=1
     )
+    lemonHoodieImg2 = Image(
+        url="https://i.imgur.com/357idhb.png",
+        product_id=1
+    )
     mandarinShirtImg = Image(
         url="https://i.imgur.com/ffaPuG0.png",
         product_id=2
@@ -34,7 +38,9 @@ def seed_images():
         product_id=8
     )
 
+
     db.session.add(lemonHoodieImg)
+    db.session.add(lemonHoodieImg2)
     db.session.add(mandarinShirtImg)
     db.session.add(limeShirtImg)
     db.session.add(grapefruitImg)
