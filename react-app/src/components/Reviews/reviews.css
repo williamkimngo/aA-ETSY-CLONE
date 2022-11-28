@@ -1,6 +1,5 @@
 * {
     font-family: "Guardian-EgypTT",Charter,"Charter Bitstream",Cambria,"Noto Serif Light","Droid Serif",Georgia,serif;
-    /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
   }
 
   * {
@@ -35,8 +34,8 @@
   }
 
   .my-reviews-upper {
-    border-top: 1px solid rgb(241, 101, 34, 0.2);
-    background-color: rgb(241, 101, 34, 0.2);
+    border-top: 1px solid #FDEBD2;
+    background-color: #FDEBD2;
     position: absolute;
     left: 0;
     top: 7.5rem;
@@ -64,6 +63,7 @@
   .my-reviews-outer {
     width: 1226px;
     padding-top: 8.2rem;
+
   }
 
   .my-reviews-inner {
@@ -79,12 +79,12 @@
   }
 
   .my-single-product-name {
-    color: rgb(241, 101, 34, 0.8);
+    color: rgba(0, 0, 0, 0.8);
     font-size: 18px;
   }
 
   .my-single-review-date {
-    color: rgba(180, 173, 173, 0.8);
+    color: rgba(126, 126, 126, 0.8);
     font-size: 15px;
     margin-top: 2px;
     margin-bottom: 2px;
@@ -112,18 +112,18 @@
     width: 115px;
     padding: 3px 10px;
     /* margin: 3px 0px 20px 0px; */
-    border: 1px rgb(241, 101, 34) solid;
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
     /* background: rgb(241, 101, 34); */
-    background: rgb(241, 101, 34);
+    background: rgb(0, 0, 0);
     color: white;
   }
 
   .review-button:hover {
     background: white;
     /* border: 1px rgb(241, 101, 34) solid; */
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
     /* color:rgb(241, 101, 34); */
   }
   /*
@@ -137,11 +137,11 @@
   } */
 
   .fa-star {
-    color: rgb(241, 101, 34);
+    color: rgb(0, 0, 0);
   }
 
   .fa-star-half-o {
-    color: rgb(241, 101, 34);
+    color: rgb(0, 0, 0);
   }
 
   .single-review {
@@ -151,7 +151,8 @@
 
   .single-review-name {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
+    color: #595959;
   }
 
   .single-review-review {
@@ -176,7 +177,7 @@
   }
 
   .edit-review-form .review-field {
-    color: rgb(241, 101, 34);
+    color: rgb(0, 0, 0);
     /* font-size: 12px; */
     padding-left: 3px;
   }
@@ -205,14 +206,6 @@
     outline: none;
   }
 
-  /* .form-input-wrapper select {
-    font-size: 14px;
-    padding: 4px;
-    border: none;
-    border-radius: 4px;
-    margin: 4px 0px;
-  } */
-
   select:focus {
     outline: none;
   }
@@ -239,7 +232,7 @@
   .validation-errors {
     list-style: none;
     font-size: 14px;
-    color: rgb(241, 101, 34);
+    color: rgb(255, 2, 2);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -254,26 +247,17 @@
     font-size: 14px;
     /* font-weight: bold; */
     margin-top: 10px;
-    border: 1px rgb(241, 101, 34) solid;
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
-    background: rgb(241, 101, 34);
+    background: rgb(0, 0, 0);
     color: white;
   }
 
   .edit-review-form .modal-submit-button:hover {
     background: white;
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
   }
-
-  /* .create-review-wrapper {
-    position: fixed;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  } */
 
 
   /* ----product detail create review button-------- */
@@ -283,16 +267,16 @@
     height: 35px;
     padding: 3px 10px;
     margin: 3px 0px 20px 0px;
-    border: 1px rgb(241, 101, 34) solid;
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
-    background: rgb(241, 101, 34);
+    background: rgb(0, 0, 0);
     color: white;
   }
 
   .create-new-review-button:hover {
     background: white;
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
   }
 
   /* ---------Hover Stars--------- */
@@ -320,7 +304,7 @@
 
   .product-review-button-wrap {
     display: flex;
-    /* justify-content:space-around; */
+
     align-items: baseline;
     padding: 0px 2px 2px 0px;
     margin-top: 10px;
@@ -333,17 +317,17 @@
     cursor: pointer;
     width: 80px;
     padding: 3px 10px;
-    /* margin: 3px 0px 20px 0px; */
-    border: 1px rgb(241, 101, 34) solid;
+
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
-    background: rgb(241, 101, 34);
+    background: rgb(1, 1, 1);
     color: white;
   }
 
   .product-review-button:hover {
     background: white;
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
   }
 
 
@@ -439,16 +423,16 @@
     /* margin: 0px 25px 5px 25px; */
     margin-top: 15px;
     margin-bottom: 10px;
-    border: 1px rgb(241, 101, 34) solid;
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
-    background: rgb(241, 101, 34);
+    background: rgb(0, 0, 0);
     color: white;
   }
 
   .create-review-modal-whole .modal-submit-button:hover {
     background: white;
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
   }
 
   .create-review-modal-whole  {
@@ -460,4 +444,10 @@
     padding-left: 45px;
     padding-right: 45px;
     margin-top: 15px;
+  }
+
+  .single-review-section {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
   }

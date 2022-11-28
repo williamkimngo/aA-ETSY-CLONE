@@ -64,7 +64,7 @@ const CurrentUserReview = ({review, user}) => {
           <>
             <div className="my-single-rating">
                 {
-                  [...Array(review?.stars)].map((star) => (<i className="fa-solid fa-star"></i>))
+                  [...Array(review?.ratings)].map((star) => (<i className="fa-solid fa-star"></i>))
                 }
             </div>
             <div className="my-single-review">

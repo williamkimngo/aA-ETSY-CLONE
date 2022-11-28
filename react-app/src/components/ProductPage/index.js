@@ -127,7 +127,7 @@ const ProductPage = () => {
             {
               currentProduct?.avgRating &&
               <span>
-              {[...Array(5)].map((star) => (<AiFillStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
+              {[...Array(0)].map((star) => (<AiFillStar className="prod-star" color="#e4e5e9" size={16.5}/>))}
               </span>
             }
             </span>

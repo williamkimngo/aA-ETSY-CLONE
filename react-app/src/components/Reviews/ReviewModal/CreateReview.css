@@ -1,5 +1,5 @@
 .review-field {
-    color: rgb(241, 101, 34);
+    color: rgb(0, 0, 0);
     /* font-size: 12px; */
     padding-left: 3px;
   }
@@ -55,9 +55,9 @@
     height: 35px;
     padding: 3px 10px;
     margin: 3px 0px 20px 0px;
-    border: 1px rgb(241, 101, 34) solid;
+    border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
-    background: rgb(241, 101, 34);
+    background: rgb(0, 0, 0);
     color: white;
     font: bold;
     font-size: 15px;
@@ -65,6 +65,6 @@
 
   .create-review-button:hover {
     background: white;
-    border: 1px rgb(241, 101, 34) solid;
-    color:rgb(241, 101, 34);
+    border: 1px rgb(0, 0, 0) solid;
+    color:rgb(0, 0, 0);
   }

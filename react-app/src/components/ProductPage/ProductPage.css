@@ -213,3 +213,10 @@
     padding: 1px 8px;
     margin-bottom: 25px;
   }
+
+  .single-product-numReviews {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
