@@ -11,7 +11,7 @@ const CreateReviewForm = () => {
   const {productId} = useParams()
 
   const [review, setReview] = useState("")
-  const [stars, setStars] = useState(5)
+  const [rating, setStars] = useState(5)
   const [errors, setErrors] = useState([])
 
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -37,7 +37,8 @@ const CreateReviewForm = () => {
 
     if (errorsArr.length) return
 
-    const reviewInfo = { review, stars }
+    const reviewInfo = { review:review, rating:rating }
+
 
     const newReview = await dispatch(thunkCreateReview(reviewInfo, productId, currentUser))
       .catch(async (res) => {
@@ -85,7 +86,7 @@ const CreateReviewForm = () => {
               >
                 {[1,2,3,4,5].map((num)=>(<option>{num}</option>))}
               </select> */}
-              <StarHovering stars={stars} setStars={setStars}/>
+              <StarHovering stars={rating} setStars={setStars}/>
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">
@@ -95,8 +96,10 @@ const CreateReviewForm = () => {
                 placeholder="Optional"
                 value={review}
                 onChange={(e) => setReview(e.target.value)}
+
               />
             </label>
+            
         </div>
 
         <button

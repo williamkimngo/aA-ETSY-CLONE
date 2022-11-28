@@ -31,7 +31,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     setShowEditReview(false)
 
-    const reviewInfo = { "review": editReview, "stars": editStars }
+    const reviewInfo = { "review": editReview, "rating": editStars }
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
       .then(()=>history.push(`/my-reviews`))
       .catch(async (res) => {

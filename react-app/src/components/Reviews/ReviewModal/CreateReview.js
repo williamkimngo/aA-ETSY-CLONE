@@ -11,7 +11,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
   const history = useHistory()
 
   const [review, setReview] = useState("")
-  const [stars, setStars] = useState(null)
+  const [rating, setStars] = useState(null)
   const [errors, setErrors] = useState([])
 
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -30,14 +30,14 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
     setHasSubmitted(true)
 
     const errorsArr = []
-    if (stars <= 0) errorsArr.push("please enter a star rating between 1 and 5")
+    if (rating <= 0) errorsArr.push("please enter a star rating between 1 and 5")
     if (review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
 
     setErrors(errorsArr)
 
     if (errorsArr.length) return
 
-    const reviewInfo = { review, stars }
+    const reviewInfo = { review:review, rating:rating }
 
     const newReview = await dispatch(thunkCreateReview(reviewInfo, productId, currentUser))
       .catch(async (res) => {
@@ -87,7 +87,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
                 {[1,2,3,4,5].map((num)=>(<option>{num}</option>))}
               </select> */}
               <div className="create-hover">
-                <StarHovering stars={stars} setStars={setStars}/>
+                <StarHovering stars={rating} setStars={setStars}/>
               </div>
             </label>
             <div className="form-input-break"></div>

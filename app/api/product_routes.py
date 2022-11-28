@@ -225,12 +225,16 @@ def create_review(product_id):
     for review in existed_reviews:
       if review.user_id == current_user.id:
         return {"errors": "You have already left a review for this product"}, 400
+  user_id = current_user.id
+  print(user_id, "USERID")
+  product_id = product_id
+  print(product_id, "PRODUCTID")
   if form.validate_on_submit():
     new_review = Review(
-      user_id = current_user.id,
-      product_id = product_id,
+      user_id=current_user.id,
+      product_id=product_id,
       review = form.data["review"],
-      ratings = form.data["ratings"],
+      ratings = form.data["rating"],
       created_at = datetime.now()
     )
     db.session.add(new_review)

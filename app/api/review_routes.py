@@ -25,12 +25,11 @@ def get_my_reviews():
 def edit_review(review_id):
   form = ReviewForm()
   form['csrf_token'].data = request.cookies["csrf_token"]
-  # review = Review.query.get(review_id)
   review = Review.query.filter(Review.id == review_id).first()
   if review.user_id == current_user.id:
     if form.validate_on_submit():
       review.review = form.data['review']
-      review.ratings = form.data['ratings']
+      review.ratings = form.data['rating']
 
       db.session.commit()
 

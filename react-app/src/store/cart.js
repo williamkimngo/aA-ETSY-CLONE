@@ -19,4 +19,9 @@ const updateCartItem = (id, quantity) => ({
     quantity
 })
 
+const deleteCartItem = id => ({
+    type: DELETE_CART,
+    id
+})
+
 
