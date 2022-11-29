@@ -2,6 +2,11 @@
     color: rgb(0, 0, 0);
     /* font-size: 12px; */
     padding-left: 3px;
+    font-weight: bolder;
+  }
+
+  .review-field ul {
+    font-weight: normal;
   }
 
   .review-modal-subheader {
@@ -35,19 +40,17 @@
     border: none;
     border-radius: 4px;
     margin: 4px 0px;
+
   }
 
   select:focus {
     outline: none;
   }
 
-  /* option {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-  } */
+  .review-field span {
+    color: rgb(144, 12, 12);
+  }
+
 
   .create-review-button {
     cursor: pointer;

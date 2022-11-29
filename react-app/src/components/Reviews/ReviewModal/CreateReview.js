@@ -30,9 +30,9 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
     setHasSubmitted(true)
 
     const errorsArr = []
-    if (rating <= 0) errorsArr.push("please enter a star rating between 1 and 5")
-    if (review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
-
+    if (rating <= 0) errorsArr.push("Please enter a star rating between 1 and 5")
+    if (review.length > 1000) errorsArr.push("Please enter a valid review fewer than 1000 characters long")
+    if (!review) errorsArr.push("Please complete your review.")
     setErrors(errorsArr)
 
     if (errorsArr.length) return
@@ -92,11 +92,16 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">
-              Review:
+              Helpful reviews on Zesty mention:<span>*</span>
+              <ul>
+                <li>the quality of the item</li>
+                <li>if the item matched the description</li>
+                <li>if the item met your expectations</li>
+              </ul>
               <textarea
                 type="text"
                 value={review}
-                placeholder="Optional"
+                placeholder="Review"
                 onChange={(e) => setReview(e.target.value)}
               />
             </label>
@@ -109,7 +114,7 @@ const CreateReview = ({productId, setShowNewReviewModal}) => {
         // }
         className="modal-submit-button"
         >
-          Create Review
+          Submit Review
         </button>
         </div>
 

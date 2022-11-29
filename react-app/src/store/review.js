@@ -41,14 +41,14 @@ const deleteReviewAction = (reviewId) => {
 }
 
 export const fetchGetProductReviews = (ProductId) => async (dispatch) => {
-    console.log("PORDUCTID", ProductId)
+    // console.log("PORDUCTID", ProductId)
     const response = await fetch(`/api/products/${ProductId}/reviews`)
-    console.log(response, "RESPONSE????")
+    // console.log(response, "RESPONSE????")
     if (response.ok) {
         const data = await response.json()
-        console.log(data, "DATA????")
+        // console.log(data, "DATA????")
         const reviewsArray = data.Reviews
-        console.log(reviewsArray, "REVARRAY??")
+        // console.log(reviewsArray, "REVARRAY??")
         dispatch(getReviewsAction(reviewsArray))
         return data
     }
@@ -65,13 +65,13 @@ export const fetchGetUserReviews = () => async (dispatch) => {
 }
 
 export const thunkCreateReview = (newreview, productId, user) => async (dispatch) => {
-    console.log(newreview, "NEWREIVEW?????")
+    // console.log(newreview, "NEWREIVEW?????")
     const res = await fetch(`/api/products/${productId}/reviews`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newreview)
     })
-    console.log(res, "POSTRESS???")
+    // console.log(res, "POSTRESS???")
     if (res.ok) {
         const data = await res.json()
         console.log(data, "POSTDATA??????")
@@ -85,16 +85,16 @@ export const thunkCreateReview = (newreview, productId, user) => async (dispatch
 }
 
 export const thunkEditReview = (myreview, reviewId) => async (dispatch) => {
-    // console.log(myreview, "MYREVIEW?????")
+
     const res = await fetch(`/api/reviews/${reviewId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(myreview),
     })
-    // console.log(res, "EDITRESE?????")
+
     if (res.ok) {
         const data = await res.json()
-        // console.log(data, "EDITDATA???")
+      
         dispatch(editReviewAction(data))
         return data
     }

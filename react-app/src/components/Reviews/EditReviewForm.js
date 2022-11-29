@@ -11,6 +11,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   const [editReview, setEditReview] = useState(myreview.review)
   const [editStars, setEditStars] = useState(myreview.stars)
+  const [rating, setStars] = useState(null)
   const [errors, setErrors] = useState([])
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const reviewId = myreview?.id
@@ -22,16 +23,18 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
     setHasSubmitted(true)
 
     const errorsArr = []
+    if (rating <= 0) errorsArr.push("please enter a star rating between 1 and 5")
 
-    if (editReview.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (editReview.length > 1000) errorsArr.push("please enter a valid review fewer than 1000 characters long")
 
+    if (!editReview) errorsArr.push("Please complete your review.")
     setErrors(errorsArr)
 
     if (errorsArr.length) return
 
     setShowEditReview(false)
 
-    const reviewInfo = { "review": editReview, "rating": editStars }
+    const reviewInfo = { "review": editReview, "rating": rating }
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
       .then(()=>history.push(`/my-reviews`))
       .catch(async (res) => {
@@ -48,7 +51,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
   const reset = () => {
     setEditReview("")
-    setEditStars(5)
+    setStars(5)
     setErrors([])
     setHasSubmitted(false)
   }
@@ -75,11 +78,11 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
               >
                 {[1,2,3,4,5].map((num)=>(<option key={num}>{num}</option>))}
               </select> */}
-              <StarHovering stars={editStars} setStars={setEditStars}/>
+              <StarHovering stars={rating} setStars={setStars}/>
             </label>
             <div className="form-input-break"></div>
             <label className="review-field">
-              {/* Review: */}
+
               <textarea
                 type="text"
                 placeholder="Optional"
