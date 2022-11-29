@@ -30,12 +30,13 @@ def seed_images():
         product_id=6
     )
     orangeImg2 = Image(
-        url="https://i.imgur.com/A90TFbS.png",
+        url="https://i.imgur.com/TZjAoqd.png",
         product_id=7
     )
     lemonImg2 = Image(
-        url="https://i.imgur.com/TZjAoqd.png",
+        url="https://i.imgur.com/A90TFbS.png",
         product_id=8
+
     )
 
 

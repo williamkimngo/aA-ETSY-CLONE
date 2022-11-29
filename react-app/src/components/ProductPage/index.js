@@ -6,6 +6,7 @@ import { fetchSingleProduct } from '../../store/product';
 import { AiFillStar } from "react-icons/ai"
 import ProductReviews from '../Reviews/productReviews';
 import CreateReviewModal from '../Reviews/ReviewModal';
+import { fetchAddCart } from '../../store/cart';
 
 const ProductPage = () => {
     const history = useHistory()
@@ -43,6 +44,27 @@ const ProductPage = () => {
     for (let i = 1; i <= currentProduct?.quantity; i++) {
         choices.push(i)
     }
+
+    const addToCart = async () => {
+        if(sessionUser){
+            if (sessionUser.id === currentProduct.sellerId) {
+                await window.alert("You are the owner of this product! You cannot add it to cart")
+                return history.push('/')
+            }
+        await dispatch(fetchAddCart(currentProduct.id, quantity))
+        return history.push('/cart')
+        } else {
+            window.alert(`Please sign in to purchase.`)
+        }
+    }
+      const getCartButtonMessage = (stock) => {
+        if (stock === 0) return 'Out of stock'
+        let messageBase = 'Add to cart';
+        if (stock <= 5) {
+              messageBase += ` | Only ${stock} available`
+        }
+        return messageBase;
+     }
 
     return (
         <div className='entire-product-container'>
@@ -146,14 +168,14 @@ const ProductPage = () => {
             </div>
             <div className="single-product-addtocart">
 
-                {/* {currentUser ?
+                {currentUser ?
                               <button className="add-to-cart-button" type='button' variant='outlined'
                               disabled={currentProduct.quantity === 0}
                               onClick={addToCart}>
                               {getCartButtonMessage(currentProduct.quantity)}
                               </button>
                 : <button className="not-login-addtocart-button">Please log in to purchase</button>
-                } */}
+                }
 
           <div className="product-detail-award">
             <i className="fa-solid fa-award fa-2xl"></i>

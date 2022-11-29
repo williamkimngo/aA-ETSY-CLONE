@@ -80,18 +80,16 @@
 
   .my-single-product-name {
     color: rgba(0, 0, 0, 0.8);
-    font-size: 18px;
+    font-size: 26px;
   }
 
   .my-single-review-date {
     color: rgba(126, 126, 126, 0.8);
-    font-size: 15px;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    font-size: 13px;
   }
 
   .my-single-review {
-    margin-top: 5px;
+    /* margin-top: 5px; */
     overflow-y: auto;
     height: 100px;
   }
@@ -144,20 +142,17 @@
     color: rgb(0, 0, 0);
   }
 
-  .single-review {
-    /* font-weight: bolder; */
-    margin-bottom: 30px;
-  }
+
 
   .single-review-name {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 13px;
     color: #595959;
   }
 
   .single-review-review {
-    margin-top: 5px;
-    height: 60px;
+    /* margin-top: 5px; */
+    /* height: 60px; */
     overflow-y: auto;
   }
 
