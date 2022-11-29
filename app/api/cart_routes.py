@@ -33,7 +33,7 @@ def checkout_cart_items():
 
     out_of_stock_message = []
     for cart_item in cart_items:
-      if cart_item.product.stock < cart_item.quantity:
+      if cart_item.product.quantity < cart_item.quantity:
         out_of_stock_message.append(f"not enough stock for product: {cart_item.product.name}")
     if len(out_of_stock_message):
       return {"errors": out_of_stock_message}, 400
@@ -46,7 +46,7 @@ def checkout_cart_items():
         "name": cart_item.product.name,
       })
       cart_item.order_id = 1
-      cart_item.product.stock -= cart_item.quantity
+      cart_item.product.quantity -= cart_item.quantity
       db.session.commit()
     return {"message": f"these items have been purchased: {purchased}",}, 200
 

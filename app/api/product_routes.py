@@ -105,7 +105,7 @@ def product_details(product_id):
         return {"error": "Unable to find Product", "statusCode": 404}
 
 @product_routes.route("", methods=["POST"])
-@login_required
+# @login_required
 def create_product():
     """
     This will allowed logged in user to create a new product
@@ -243,14 +243,10 @@ def create_review(product_id):
   else:
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
-@product_routes.route("/<int:product_id>/cart_items", methods=["POST"])
+@product_routes.route("/<int:product_id>/cart", methods=["POST"])
 @login_required
 def create_cart_item(product_id):
-  print(f"-------111BACKEND STARTS-------product id: {product_id}")
   item = Product.query.get(product_id)
-  print(f"-------222BACKEND -------item: {item}")
-  print(f"-------222BACKEND -------item.seller_id: {item.seller_id}")
-  print(f"-------222BACKEND -------current_user.id: {current_user.id}")
   cart = db.session.query(Cart) \
                             .filter(Cart.user_id == current_user.id) \
                             .filter(Cart.product_id == product_id) \
@@ -281,6 +277,7 @@ def create_cart_item(product_id):
     else:
       if cart.quantity + form.data["quantity"] > cart.product.quantity:
         cart.quantity = cart.product.quantity
+        print(cart.quantity, "CARTQUANT!!!!!!!!")
         cart.message = "You have reached the maximum quantity for this product."
         db.session.commit()
         return cart.to_dict_current(), 200
