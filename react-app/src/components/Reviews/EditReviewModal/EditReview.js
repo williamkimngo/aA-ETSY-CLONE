@@ -30,7 +30,7 @@ const EditReview = ({productId, setShowModal}) => {
 
     const errorsArr = []
 
-    if (!review.length || review.length > 2000) errorsArr.push("please enter a valid review fewer than 2000 characters long")
+    if (!review.length || review.length > 1000) errorsArr.push("Please enter a valid review fewer than 1000 characters long")
 
     setErrors(errorsArr)
 

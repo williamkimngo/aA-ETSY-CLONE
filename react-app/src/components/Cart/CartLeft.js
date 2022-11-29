@@ -21,10 +21,10 @@ const CartItem = ({ item }) => {
         options.push(i);
     }
 
-    useEffect(async () => {
+    useEffect( () => {
         console.log(item, "INITIALITEM??????")
         console.log(item?.id, "DISPATCHID????")
-        await dispatch(fetchEditCart(item?.id, quantity)).then(async () => {
+        dispatch(fetchEditCart(item?.id, quantity)).then(async () => {
             const allItems = await dispatch(fetchGetCart());
             // console.log(allItems, "ALLITEMS????")
             const cartDetails = allItems?.Carts
