@@ -66,7 +66,7 @@ const ProductHome = () => {
                         </NavLink>
                     </div>
                     <div className='category-cricles'>
-                        <NavLink className="img-link" to={`/products/${limeProducts[0]?.id}`}>
+                        <NavLink className="img-link" to={`/products/${grapeFruitProducts[0]?.id}`}>
                             <div className='img-circle'>
                                 <img src={grapeFruitProducts[0]?.previewImage} className='individual-img' alt='individual'></img>
                             </div>

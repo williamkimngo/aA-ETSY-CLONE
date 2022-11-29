@@ -9,7 +9,7 @@ const CheckOutCart = ({ cartItemsArr, totalPrice }) => {
     const subtotal = Number(totalPrice).toFixed(2);
     console.log(subtotal, "SUBTOTAL????")
     const tax = Number((subtotal * 0.0825)).toFixed(2)
-    const total = (Number(subtotal) + Number(tax)).toFixed(2)
+    const total = (Number(subtotal) + 5 + Number(tax)).toFixed(2)
 
     const deleteCart = async e => {
         e.preventDefault();
