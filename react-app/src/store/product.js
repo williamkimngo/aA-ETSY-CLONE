@@ -151,7 +151,7 @@ export const fetchUserProducts = () => async (dispatch) => {
 }
 
 export const searchProducts = (keyword) => async (dispatch) => {
-    const res = await fetch(`/api/products/search/${keyword}`)
+    const res = await fetch(`/api/products/search/${keyword.charAt(0).toUpperCase() + keyword.slice(1)}`)
     if (res.ok) {
         const data = await res.json()
         dispatch(productSearch(data))
