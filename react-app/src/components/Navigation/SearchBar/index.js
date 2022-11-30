@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { searchProducts } from '../../../store/product';
 import './searchBar.css'
 
 const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
+  const dispatch = useDispatch()
+  const history = useHistory()
 
-  const handleSearch = async (e) => {
+  const searchSubmit = async (e) => {
     e.preventDefault()
     if (keyword.trim().length === 0) {
       return
+    }
+    const res = await dispatch(searchProducts(keyword))
+    if (res){
+      history.push(`/search/${keyword}`)
     }
     setKeyword("")
   }
@@ -16,7 +24,7 @@ const SearchBar = () => {
     <div className='searchBar-main'>
 
       <div className='navBar-searchBar-container'>
-        <form onSubmit={handleSearch} className="searchBar-form">
+        <form onSubmit={searchSubmit} className="searchBar-form">
           <input
             placeholder='Search for anything'
             className='searchBar-input'

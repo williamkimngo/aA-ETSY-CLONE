@@ -14,6 +14,10 @@ import UserReviews from './components/Reviews/UserReviews';
 import CreateReview from './components/Reviews/ReviewModal/CreateReview';
 import EditReviewForm from './components/Reviews/EditReviewForm';
 import Cart from './components/Cart';
+import CreateProduct from './components/CreateProductForm';
+import AccountProfile from './components/AccountProfile';
+import SearchProducts from './components/ProductSearchBar';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,14 +41,23 @@ function App() {
         <Route path='/' exact={true} >
           <ProductHome />
         </Route>
+        <Route path='/search/:keyword'>
+            <SearchProducts />
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/account' exact={true} >
+          <AccountProfile/>
+        </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
+        </Route>
+        <Route path='/new-product' exact={true} >
+          <CreateProduct />
         </Route>
         <Route path='/products/:productId/new-review' exact={true} >
           <CreateReview />

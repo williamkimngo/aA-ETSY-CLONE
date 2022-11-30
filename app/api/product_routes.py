@@ -32,7 +32,7 @@ def get_products():
 
 @product_routes.route("/account")
 @login_required
-def get_my_products():
+def user_products():
   user_id = current_user.id
   products = Product.query.filter(Product.seller_id == user_id).all()
 
@@ -54,7 +54,7 @@ def get_my_products():
         numReviews = len(productreviews)
         total_rating = 0
         for review in productreviews:
-          total_rating += review.to_dict()["rating"]
+          total_rating += review.to_dict()["ratings"]
         avgRating = total_rating / numReviews
         product['avgRating'] = avgRating
 
@@ -288,3 +288,12 @@ def create_cart_item(product_id):
   else:
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+@product_routes.route("/search/<keyword>")
+def search_product(keyword):
+  products = Product.query.filter(Product.name.like(f"%{keyword}%")).all()
+  return {
+    "Products": [
+      product.to_dict_search() for product in products
+    ]
+  }, 200
