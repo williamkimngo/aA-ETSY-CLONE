@@ -4,6 +4,7 @@ const CREATE_PRODUCT = 'products/createproduct'
 const EDIT_PRODUCT = 'products/editproduct'
 const DELETE_PRODUCT = 'products/deleteproduct'
 const ADD_IMG = 'products/addimg'
+const ALL_USER_PRODUCTS = 'products/userproducts'
 
 //actions
 const getProducts = (products) => {
@@ -45,6 +46,13 @@ const addImg = (img) => {
     return {
         type: ADD_IMG,
         img
+    }
+}
+
+const userProducts = (products) => {
+    return {
+        type: ALL_USER_PRODUCTS,
+        products
     }
 }
 
@@ -123,7 +131,13 @@ export const fetchImg = (url, productId) => async (dispatch) => {
     }
 }
 
-
+export const fetchUserProducts = () => async (dispatch) => {
+    const res = await fetch(`/api/products/account`)
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(userProducts(data))
+    }
+}
 //reducer
 const initialState = { allProducts: {}, singleProduct: {}}
 
@@ -156,6 +170,12 @@ const productReducer = (state = initialState, action) => {
             return newState
         case ADD_IMG:
             newState = { ...state, singleProduct: { ...state.singleProduct, productImages:[action.imgData]}}
+            return newState
+        case ALL_USER_PRODUCTS:
+            newState = {...state}
+            const userProducts = {}
+            action.products.Products.forEach(product => userProducts[product.id] = product)
+            newState.allProducts = userProducts
             return newState
         default:
             return state

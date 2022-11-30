@@ -24,6 +24,9 @@ const NavBar = () => {
                     {sessionUser ?
                         <>
                             <div className='navBar-link-icon'>
+                            <NavLink to='/account' exact={true} activeClassName='active'>
+                  <img src="https://i.imgur.com/IBreHpQ.png" alt='myShop'></img>
+                </NavLink>
                             </div>
                             <div className='navBar-link-profile'>
                                 <ProfileButton user={sessionUser} />

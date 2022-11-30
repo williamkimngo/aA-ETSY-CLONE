@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { FaStar } from "react-icons/fa"
+import { AiFillStar } from "react-icons/ai"
 import '../reviews.css'
 
 const StarHovering = ({ stars, setStars }) => {
@@ -18,9 +18,9 @@ const StarHovering = ({ stars, setStars }) => {
               value={ratingValue}
               onClick={()=>setStars(ratingValue)}
             />
-            <FaStar
+            <AiFillStar
               className="star"
-              color={ ratingValue <= (hover||stars) ? "#f16522":"#e4e5e9"}
+              color={ ratingValue <= (hover||stars) ? "#040505":"#e4e5e9"}
               size={20}
               onMouseEnter={()=>setHover(ratingValue)}
               onMouseLeave={()=>setHover(null)}

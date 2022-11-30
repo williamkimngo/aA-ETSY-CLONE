@@ -14,6 +14,9 @@ import UserReviews from './components/Reviews/UserReviews';
 import CreateReview from './components/Reviews/ReviewModal/CreateReview';
 import EditReviewForm from './components/Reviews/EditReviewForm';
 import Cart from './components/Cart';
+import CreateProduct from './components/CreateProductForm';
+import AccountProfile from './components/AccountProfile';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,8 +46,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+        <Route path='/account' exact={true} >
+          <AccountProfile/>
+        </Route>
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
+        </Route>
+        <Route path='/new-product' exact={true} >
+          <CreateProduct />
         </Route>
         <Route path='/products/:productId/new-review' exact={true} >
           <CreateReview />
