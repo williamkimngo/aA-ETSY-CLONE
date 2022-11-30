@@ -38,7 +38,7 @@ const UserProducts = ({ product }) => {
 
       <div className="userproducts-image-container">
         <Link style={{ textDecoration: "none", color: "black" }} to={`/products/${product.id}`}>
-          (<img src={product.previewImage} />)
+          <img src={product.previewImage} />
         </Link>
 
       </div>

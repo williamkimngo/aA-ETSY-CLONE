@@ -14,7 +14,7 @@
     width: 100%;
     min-height: 100px;
     min-width: 100%;
-    z-index: -5
+    z-index: -10
   }
 
 
@@ -35,7 +35,10 @@
   .userproducts-outer {
     width: 1226px;
     padding-top: 8.2rem;
+    z-index: 5;
   }
+
+
 
   .userproducts-inner {
     display: grid;
