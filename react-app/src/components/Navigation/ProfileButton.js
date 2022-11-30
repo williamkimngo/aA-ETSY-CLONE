@@ -34,9 +34,10 @@ const ProfileButton = ({user}) => {
         <div className='profile-dropdown'>
           <div className='dropdown-item-top'>
             <div className='profile-user-img'><i className="fa-solid fa-user"></i></div>
-            <div className='profile-name'>{user.firstName}
+            {/* <div className='profile-name'>{user.firstName} */}
             <span>
-            <NavLink exact to="/account">View your profile</NavLink></span></div>
+            <NavLink exact to="/account"><div className='profile-name'>{user.firstName}</div><div className='profile-link'>View your profile</div></NavLink></span>
+            {/* </div> */}
           </div>
           <div className='create-product-tab'>
             <div className='create-icon'><i class="fa-solid fa-right-to-bracket"></i></div>
