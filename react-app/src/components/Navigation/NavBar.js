@@ -39,7 +39,7 @@ const NavBar = () => {
                             </div>
                         </>
                     }
-                    <div className='navBar-link-icon'>
+                    <div className='navBar-link-cart'>
                         <NavLink to='/cart' exact={true} activeClassName='active'>
                             <div className='cart-pic'><img src="https://i.imgur.com/CWzhu6j.png" alt='cart'>
 

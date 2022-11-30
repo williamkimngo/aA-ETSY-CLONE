@@ -25,6 +25,11 @@ nav {
   display: flex;
   align-items: center;
 }
+.navBar-home:hover {
+  background-color: gray;
+}
+
+
 
 .logo {
   /* left: 62px; */
@@ -40,26 +45,49 @@ nav {
   border-radius: 48%;
 }
 
-.navBar-link-icon:hover,
+/* .navBar-link-icon:hover,
 .navBar-link-profile:hover,
 .profile-btm-div:hover {
   background-color: rgba(128, 128, 128, 0.095);
   cursor: pointer;
-}
+} */
 
 .navBar-link-profile {
   display: flex;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
   margin-top: -5px;
-  margin-left: 4px;
-  border-radius: 35%;
+  /* margin-left: 4px; */
+  border-radius: 10px;
+}
+
+.navBar-link-cart {
+  display: flex;
+  align-items: center;
+  /* padding: 12px; */
+  margin-top: 12px;
+  border-radius: 48%;
+  flex-direction: row;
+  height: 50px;
+  width: 60px;
+  justify-content: center
 }
 
 .navBar-link-icon img {
   height: 3rem;
   width: 3rem;
   text-decoration: none;
+}
+
+.navBar-link-cart img {
+  height: 1.8rem;
+  width: 1.8rem;
+  text-decoration: none;
+}
+
+.navBar-link-cart:hover {
+  background-color: lightgray;
+  border-radius: 80%;
 }
 
 .cart-pic .cartbubble {
