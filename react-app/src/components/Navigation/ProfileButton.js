@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import './ProfileButton.css'
+import { IoCreateOutline } from "react-icons/io5";
 
 const ProfileButton = ({user}) => {
   const [showMenu, setShowMenu] = useState();
@@ -33,18 +34,17 @@ const ProfileButton = ({user}) => {
         <div className='profile-dropdown'>
           <div className='dropdown-item-top'>
             <div className='profile-user-img'><i className="fa-solid fa-user"></i></div>
-            <div className='profile-name'>{user.firstName}</div>
+            <div className='profile-name'>{user.firstName}
+            <span>
+            <NavLink exact to="/account">View your profile</NavLink></span></div>
           </div>
-          <NavLink to='/my-reviews' style={{textDecoration: 'none'}}>
-            <div className='dropdown-item'>
-              <div className='my-reviews-img'><i className="fa-solid fa-list-ul"></i></div>
-              <div className='my-reviews'>My Reviews</div>
+          <div className='create-product-tab'>
+            <div className='create-icon'><i class="fa-solid fa-right-to-bracket"></i></div>
+            <div className='create-product-link'>
+              <NavLink exact to="/create-product">Sell your product!</NavLink>
             </div>
-          </NavLink>
-          {/* <div className='dropdown-item'>
-            <div className='sign-out-img'><i className="fa-sharp fa-solid fa-arrow-right-from-bracket"></i></div> */}
+            </div>
             <LogoutButton />
-          {/* </div> */}
         </div>
       </>}
     </div >

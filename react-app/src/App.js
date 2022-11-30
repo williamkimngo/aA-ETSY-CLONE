@@ -56,7 +56,7 @@ function App() {
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
         </Route>
-        <Route path='/new-product' exact={true} >
+        <Route path='/create-product' exact={true} >
           <CreateProduct />
         </Route>
         <Route path='/products/:productId/new-review' exact={true} >
@@ -65,9 +65,9 @@ function App() {
         <Route path='/reviews/:reviewId/edit-review' exact={true} >
           <EditReviewForm />
         </Route>
-        <Route path='/my-reviews' exact={true} >
+        {/* <Route path='/my-reviews' exact={true} >
           <UserReviews />
-        </Route>
+        </Route> */}
         <Route path='/cart' exact={true}>
             <Cart />
         </Route>
