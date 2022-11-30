@@ -5,6 +5,7 @@ const EDIT_PRODUCT = 'products/editproduct'
 const DELETE_PRODUCT = 'products/deleteproduct'
 const ADD_IMG = 'products/addimg'
 const ALL_USER_PRODUCTS = 'products/userproducts'
+const PRODUCT_SEARCH = 'products/productsearch'
 
 //actions
 const getProducts = (products) => {
@@ -52,6 +53,13 @@ const addImg = (img) => {
 const userProducts = (products) => {
     return {
         type: ALL_USER_PRODUCTS,
+        products
+    }
+}
+
+const productSearch = (products) => {
+    return {
+        type: PRODUCT_SEARCH,
         products
     }
 }
@@ -132,14 +140,26 @@ export const fetchImg = (url, productId) => async (dispatch) => {
 }
 
 export const fetchUserProducts = () => async (dispatch) => {
-    const res = await fetch(`/api/products/account`)
+    const res = await fetch('/api/products/account')
+    console.log(res, "RES?????")
     if (res.ok) {
         const data = await res.json()
+        console.log(data, "USERPRODUCSTDATA!!!!!")
         dispatch(userProducts(data))
+        return data
+    }
+}
+
+export const searchProducts = (keyword) => async (dispatch) => {
+    const res = await fetch(`/api/products/search/${keyword}`)
+    if (res.ok) {
+        const data = await res.json()
+        dispatch(productSearch(data))
+        return data
     }
 }
 //reducer
-const initialState = { allProducts: {}, singleProduct: {}}
+const initialState = { allProducts: {}, singleProduct: {}, searchProducts: {}}
 
 
 const productReducer = (state = initialState, action) => {
@@ -174,8 +194,15 @@ const productReducer = (state = initialState, action) => {
         case ALL_USER_PRODUCTS:
             newState = {...state}
             const userProducts = {}
+            console.log(action.products, "USERPRODUCTS??????")
             action.products.Products.forEach(product => userProducts[product.id] = product)
             newState.allProducts = userProducts
+            return newState
+        case PRODUCT_SEARCH:
+            newState = {...state, searchProducts: {}}
+            action.products.Products.forEach(product => {
+                newState.searchProducts[product.id] = product
+            })
             return newState
         default:
             return state

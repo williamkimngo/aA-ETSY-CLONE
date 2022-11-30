@@ -1,11 +1,11 @@
-.my-products-main {
+.userproducts-container {
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .my-products-upper {
+  .userproducts-upper {
     border-top: 1px solid #FDEBD2;
     background-color: #FDEBD2;
     position: absolute;
@@ -18,13 +18,13 @@
   }
 
 
-  .my-products-header {
+  .userproducts-header {
     margin: 2rem auto 0.5rem;
     font-size: 1.5rem;
     width: 1220px;
   }
 
-  .my-products-shop {
+  .userproducts-products {
     font-size: 1rem;
     margin: 0 auto 2rem;
     width: 1220px;
@@ -32,12 +32,12 @@
     align-items: center;
   }
 
-  .my-products-outer {
+  .userproducts-outer {
     width: 1226px;
     padding-top: 8.2rem;
   }
 
-  .my-products-inner {
+  .userproducts-inner {
     display: grid;
     /* grid-template-columns: minmax(210px, 18.75%) minmax(360px, 31.25%) minmax(210px, 18.75%) minmax(360px, 31.25%); */
     grid-template-columns: minmax(0,50%) minmax(0,50%);
@@ -45,25 +45,25 @@
     margin-top: 1rem;
   }
 
-  .myproducts-product-container {
+  .userproducts-card-container {
     display: grid;
     grid-template-columns: minmax(0,40%) minmax(0, 60%);
     margin-bottom: 10px;
   }
 
-  .myproducts-product-image-container {
+  .userproducts-image-container {
     min-width: 210px;
     height: 170px;
     margin-bottom: 1rem;
   }
 
-  .myproducts-product-image-container img {
+  .userproducts-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
 
-  .myproducts-product-info {
+  .userproducts-info {
     padding: 0px 10px 15px 25px;
     position: relative;
     display: flex;
@@ -71,17 +71,17 @@
     justify-content: space-between;
   }
 
-  .myproducts-product-category {
+  .userproducts-category {
     font-size: 18px;
     color: rgb(241, 101, 34, 0.8);
   }
 
-  .myproducts-product-rating {
+  .userproducts-rating {
     color: rgba(180, 173, 173, 0.8);
   }
 
 
-  .myproducts-product-quantity {
+  .userproducts-quantity {
     /* margin-top: 90px; */
     color: rgba(0, 0, 0, 0.8);
   }
@@ -90,7 +90,7 @@
 
 
 
-  .myproduct-buttons-container {
+  .userproducts-buttons-container {
     display: flex;
     justify-content:space-between;
     padding: 0px 2px 2px 0px;

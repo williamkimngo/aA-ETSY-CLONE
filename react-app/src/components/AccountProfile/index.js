@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Redirect } from "react-router-dom"
-import { fetchAllProducts } from "../../store/product"
+import { fetchUserProducts } from "../../store/product"
 import './accountProfile.css'
 import UserProducts from "./UserProducts"
 
@@ -12,18 +12,21 @@ const AccountProfile = () => {
     const productsArr = Object.values(ObjProducts)
 
     useEffect(() => {
-        dispatch(fetchAllProducts())
-    }, dispatch)
+        dispatch(fetchUserProducts())
+    }, [dispatch])
 
     if (!sessionUser) {
         return <Redirect to="/" />
     }
+    if(!productsArr.length) {
+        return null
+    }
     return (
-        <div className="my-products-main">
-            <div className="my-products-upper">
-                <div className="my-products-header">Account Page</div>
+        <div className="userproducts-container">
+            <div className="userproducts-upper">
+                <div className="userproducts-header">Account Page</div>
                 {sessionUser?.username &&
-                    <div className="my-products-shop">
+                    <div className="userproducts-products">
                         <span className="shop-manager-shop-name">{sessionUser?.username}</span>
                         &nbsp;
                         <i className="fa-solid fa-angle-right"></i>
@@ -31,8 +34,8 @@ const AccountProfile = () => {
                 }
             </div>
 
-            <div className="my-products-outer">
-                <div className="my-products-inner">
+            <div className="userproducts-outer">
+                <div className="userproducts-inner">
                     {
                         productsArr.map((product) => (
                             <UserProducts key={product.id} product={product} />

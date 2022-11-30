@@ -3,6 +3,7 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editSingleProduct } from "../../store/product";
 import { fetchUserProducts } from "../../store/product";
+import './ProductEditForm.css'
 
 const ProductEditForm = ({productId, setShowEditForm }) => {
     const dispatch = useDispatch()

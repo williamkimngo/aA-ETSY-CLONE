@@ -16,6 +16,7 @@ import EditReviewForm from './components/Reviews/EditReviewForm';
 import Cart from './components/Cart';
 import CreateProduct from './components/CreateProductForm';
 import AccountProfile from './components/AccountProfile';
+import SearchProducts from './components/ProductSearchBar';
 
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
       <Switch>
         <Route path='/' exact={true} >
           <ProductHome />
+        </Route>
+        <Route path='/search/:keyword'>
+            <SearchProducts />
         </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
