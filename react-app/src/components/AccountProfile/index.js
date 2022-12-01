@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Redirect } from "react-router-dom"
+import { NavLink, Redirect } from "react-router-dom"
 import { fetchUserProducts } from "../../store/product"
 import './accountProfile.css'
 import UserProducts from "./UserProducts"
@@ -30,16 +30,22 @@ const AccountProfile = () => {
     return (
         <div className="userproducts-container">
             <div className="userproducts-upper">
-                <div className="userproducts-header">Account Page</div>
-                {sessionUser?.username &&
+                <div className="userproducts-header"><h2>Welcome to your account page, {sessionUser?.username}!</h2>
+                <div className="account-page-listproduct">
+
+                    <NavLink exact to='/create-product' activeClassName="active">List your product</NavLink></div>
+                    </div>
+                {/* {sessionUser?.username &&
                     <div className="userproducts-products">
                         <span className="shop-manager-shop-name">{sessionUser?.username}</span>
                     </div>
-                }
+                } */}
             </div>
 
             <div className="userproducts-outer">
+                <h2>Your Products</h2>
                 <div className="userproducts-inner">
+
                     {productsArr.map((product) => (
                         <UserProducts key={product.id} product={product} />
                     ))
@@ -48,6 +54,7 @@ const AccountProfile = () => {
                 <div className="userproducts-review-bottom">
                     <div className="my-reviews-main">
                         <div className="my-reviews-outer">
+                        <h2>Your Reviews</h2>
                             <div className="my-reviews-inner">
                                 {
                                     reviewsArr.map((review) => (

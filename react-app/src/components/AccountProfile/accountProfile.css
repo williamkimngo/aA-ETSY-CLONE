@@ -3,20 +3,51 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 15rem
   }
 
   .userproducts-upper {
-    border-top: 1px solid #FDEBD2;
-    background-color: #FDEBD2;
+    /* border-top: 1px solid #FDEBD2;
+    background-color: #FDEBD2; */
     position: absolute;
     left: 0;
     top: 7.5rem;
     width: 100%;
     min-height: 100px;
     min-width: 100%;
-    z-index: -10
+    z-index: 2;
+    margin-left: 20rem;
+
   }
 
+.account-page-listproduct a,
+.account-page-listproduct a:visited,
+.account-page-listproduct a:link,
+.account-page-listproduct a:active {
+    text-decoration: underline;
+    color: black;
+}
+
+.account-page-listproduct {
+  font-size: 16px;
+  margin-top: -1rem;
+
+}
+
+.userproducts-outer h2 {
+  display: flex;
+  margin-left: 30rem;
+  padding-bottom: 2rem;
+}
+
+.account-page-listproduct a:hover {
+  color: #C4C4C4;
+  transition: color 0.3s ease;
+}
+
+.account-page-listproduct:hover {
+  cursor: pointer;
+}
 
   .userproducts-header {
     margin: 2rem auto 0.5rem;
@@ -35,7 +66,7 @@
   .userproducts-outer {
     width: 1226px;
     padding-top: 8.2rem;
-    z-index: 5;
+    /* z-index: 5; */
   }
 
 

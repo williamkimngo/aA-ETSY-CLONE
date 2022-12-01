@@ -78,7 +78,7 @@ const UserProducts = ({ product }) => {
             ${parseFloat(product.price).toFixed(2)}
           </div>
           <div className="myproducts-product-stock">
-            {product.stock} left in stock
+            {product.quantity} left in stock
           </div>
         </div>
 
