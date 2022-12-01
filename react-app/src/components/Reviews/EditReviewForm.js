@@ -36,7 +36,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
 
     const reviewInfo = { "review": editReview, "rating": rating }
     const editedReview = await dispatch(thunkEditReview(reviewInfo, reviewId))
-      .then(()=>history.push(`/my-reviews`))
+      .then(()=>history.push(`/account`))
       .catch(async (res) => {
         const message = await res.json()
         const messageErrors = []
@@ -45,7 +45,7 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
           setErrors(messageErrors)
         }
       })
-    if (editedReview) history.push(`/my-reviews`)
+    if (editedReview) history.push(`/account`)
     reset()
   }
 

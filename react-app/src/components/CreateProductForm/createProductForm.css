@@ -77,7 +77,7 @@
     border-radius: 5px;
     border: 1px lightgray solid;
     width: 600px;
-    height: 30px;
+    height: 33px;
     margin-bottom: 10px;
     margin-top: 8px;
     color:grey;
@@ -97,7 +97,7 @@
     border-radius: 5px;
     border: 1px lightgray solid;
     width: 605px;
-    height: 30px;
+    height: 33px;
     margin-bottom: 10px;
     margin-top: 8px;
     color:#707070;
@@ -180,4 +180,8 @@
     padding: 0.1rem;
     color: #707070;
     margin-left: 1.3rem;
+}
+
+.createproduct-title {
+    padding-bottom: 0.5rem;
 }

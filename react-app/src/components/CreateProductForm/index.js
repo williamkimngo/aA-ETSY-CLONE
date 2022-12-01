@@ -100,7 +100,7 @@ const CreateProduct = () => {
                         <label className='createproduct-label'>
                         <div className="left-side-create">
                             <span className="createproduct-title">Category* </span>
-                            <span className="createproduct-sub-title">Select a category to help shoppers search your product.</span>
+                            <span className="createproduct-sub-title">Select a category to help shoppers find your product.</span>
                             </div>
                             <div className="right-side-product-create">
                             <br></br>
@@ -178,7 +178,7 @@ const CreateProduct = () => {
                         <label className='createproduct-label'>
                         <div className="left-side-create">
                             <span className="createproduct-title">Details* </span>
-                            <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
+                            <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.  Shoppers will only see the first few lines of your description at first, so make it count!</span>
                             </div>
                             <div className="right-side-product-create">
                             <br></br>
