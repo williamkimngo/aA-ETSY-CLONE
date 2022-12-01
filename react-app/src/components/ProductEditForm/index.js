@@ -3,7 +3,6 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { editSingleProduct } from "../../store/product";
 import { fetchUserProducts } from "../../store/product";
-import './ProductEditForm.css'
 
 const ProductEditForm = ({productId, setShowEditForm }) => {
     const dispatch = useDispatch()
@@ -47,31 +46,42 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
         }
       }
       return (
-        <div className='editproduct-wrapper'>
-            <div className='editproduct-form-title'>Edit Product</div>
-            <form className='editproduct-form' onSubmit={editHandle}>
-                <div className='editproduct-content'>
-                        <label className='editproduct-label'>
-                            <span className="editproduct-title">Name* </span>
-                            <span className="editproduct-sub-title">Update the keywords used to search for your item.</span>
+        <div className='createproduct-wrapper'>
+            <h1 className="createproduct-form-title">Edit your product</h1>
+                <p className="paragraph">Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+            <form className='createproduct-form' onSubmit={editHandle}>
+                <div className='createproduct-content'>
+                <h3>Listing Details</h3>
+                <p className="paragraph">Tell the word all about your item and why they'll love it.</p>
+                        <label className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Name* </span>
+                            <span className="createproduct-sub-title">Update the keywords used to search for your item.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
+
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Name')
                                     return (
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='editproduct-input'
+                            <input className='createproduct-input'
                                 type="text"
                                 value={name}
                                 required
                                 onChange={(e) => setName(e.target.value)}
                             />
+                            </div>
                         </label>
                         <br></br>
-                        <label className='editproduct-label'>
-                            <span className="editproduct-title">Category* </span>
-                            <span className="editproduct-sub-title">Change the category your product is listed under.</span>
+                        <label className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Category* </span>
+                            <span className="createproduct-sub-title">Change the category your product is listed under.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Category')
@@ -82,7 +92,7 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                             <select
                                 htmlFor='category'
                                 name='category'
-                                className='editproduct-input-select'
+                                className='createproduct-input-select'
                                 required
                                 onChange={(e) => setCategory(e.target.value)}
                             >
@@ -94,11 +104,15 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                                         >{category}</option>)
                                 })}
                     </select>
+                    </div>
                         </label>
                         <br></br>
-                        <label className='editproduct-label'>
-                            <span className="editproduct-title">Price* </span>
-                            <span className="editproduct-sub-title">Update the price of your product.</span>
+                        <label className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Price* </span>
+                            <span className="createproduct-sub-title">Update the price of your product.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Price')
@@ -106,17 +120,21 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='editproduct-input'
+                            <input className='createproduct-input'
                                 type="text"
                                 value={price}
                                 required
                                 onChange={(e) => setPrice(e.target.value)}
                             />
+                            </div>
                         </label>
                         <br></br>
-                        <label className='editproduct-label'>
-                            <span className="editproduct-title">Quantity* </span>
-                            <span className="editproduct-sub-title">Update the Quantity of your product.</span>
+                        <label className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Quantity* </span>
+                            <span className="createproduct-sub-title">Update the Quantity of your product.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Quantity')
@@ -124,17 +142,21 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <input className='editproduct-input'
+                            <input className='createproduct-input'
                                 type="text"
                                 value={quantity}
                                 required
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
+                            </div>
                         </label>
                         <br></br>
-                        <label className='editproduct-label'>
-                            <span className="editproduct-title">details* </span>
-                            <span className="editproduct-sub-title">Modify the details of your product.</span>
+                        <label className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Details* </span>
+                            <span className="createproduct-sub-title">Modify the details of your product.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Details')
@@ -142,15 +164,18 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
                             })}
-                            <textarea className='editproduct-input-details'
+                            <textarea className='createproduct-input-details'
                                 type="text"
                                 value={details}
                                 required
                                 onChange={(e) => setDetails(e.target.value)}
                             />
+                             </div>
                         </label>
                         <br></br>
-                    <button className="editproduct-button" type="submit">Edit</button>
+                        <div className="create-product-button">
+                        <button className="createproduct-button" type="submit">Save and continue</button>
+                        </div>
                 </div>
             </form>
         </div>

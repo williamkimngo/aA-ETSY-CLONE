@@ -58,7 +58,10 @@ const CreateProduct = () => {
         {page === 0 &&
             <>
             <div className='createproduct-wrapper'>
-                <h1 className="createproduct-form-title">Create Product</h1>
+                <div className="header-wrapper">
+                <h1 className="createproduct-form-title">Create a product</h1>
+                <p className="paragraph">Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+                </div>
                 <form className='createproduct-form' onSubmit={submitCreate}>
                     {/* <div className='createproduct-errors'>
                         <ul>
@@ -68,9 +71,14 @@ const CreateProduct = () => {
                         </ul>
                     </div> */}
                     <div className='createproduct-content'>
+                        <h3>Listing Details</h3>
+                        <p className="paragraph">Tell the word all about your item and why they'll love it.</p>
                         <label className='createproduct-label'>
+                            <div className="left-side-create">
                             <span className="createproduct-title">Name* </span>
                             <span className="createproduct-sub-title">Include keywords that buyers would use to search for your item.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Name')
@@ -84,11 +92,17 @@ const CreateProduct = () => {
                                 required
                                 onChange={(e) => setName(e.target.value)}
                             />
+
+                            </div>
                         </label>
+
                         <br></br>
                         <label className='createproduct-label'>
+                        <div className="left-side-create">
                             <span className="createproduct-title">Category* </span>
                             <span className="createproduct-sub-title">Select a category to help shoppers search your product.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Category')
@@ -110,13 +124,18 @@ const CreateProduct = () => {
                                             value={category}
                                         >{category}</option>)
                                 })}
+
                     </select>
+                    </div>
                         </label>
 
                         <br></br>
                         <label className='createproduct-label'>
+                        <div className="left-side-create">
                             <span className="createproduct-title">Price* </span>
                             <span className="createproduct-sub-title">Remember to factor in the cost of materials, labor, and other business expenses.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Price')
@@ -130,11 +149,15 @@ const CreateProduct = () => {
                                 required
                                 onChange={(e) => setPrice(e.target.value)}
                             />
+</div>
                         </label>
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">quantity* </span>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Quantity* </span>
                             <span className="createproduct-sub-title">Provide the quantity of your product.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Quantity')
@@ -148,11 +171,16 @@ const CreateProduct = () => {
                                 required
                                 onChange={(e) => setQuantity(e.target.value)}
                             />
+                            </div>
                         </label>
+
                         <br></br>
                         <label className='createproduct-label'>
-                            <span className="createproduct-title">details* </span>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Details* </span>
                             <span className="createproduct-sub-title">Start with a brief overview that describes your item's finest features.</span>
+                            </div>
+                            <div className="right-side-product-create">
                             <br></br>
                             {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Details')
@@ -166,10 +194,12 @@ const CreateProduct = () => {
                                 required
                                 onChange={(e) => setDetails(e.target.value)}
                             />
+                            </div>
                         </label>
                         <br></br>
-                        <button className="createproduct-button" type="submit">create and next</button>
-
+                        <div className="create-product-button">
+                        <button className="createproduct-button" type="submit">Save and continue</button>
+                        </div>
                     </div>
                 </form>
             </div>

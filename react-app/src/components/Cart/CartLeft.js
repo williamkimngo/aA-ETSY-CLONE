@@ -7,14 +7,12 @@ import { fetchDeleteCart } from "../../store/cart";
 import './cart.css';
 
 const CartItem = ({ item }) => {
-    console.log(item, "ITEM???????")
     const dispatch = useDispatch();
     const history = useHistory()
     const [quantity, setQuantity] = useState(Number(item?.quantity));
     let [revenue, setRevenue] = useState(Number(item?.quantity * item?.Product?.price))
-
+    console.log(item, "ITEM???")
     const stock = item?.Product.quantity
-    console.log(stock, "STOCK?!?!?!?!?!?!")
 
     const options = [];
     for (let i = 1; i <= stock; i++) {
@@ -22,15 +20,13 @@ const CartItem = ({ item }) => {
     }
 
     useEffect( () => {
-        console.log(item, "INITIALITEM??????")
-        console.log(item?.id, "DISPATCHID????")
-        dispatch(fetchEditCart(item?.id, quantity)).then(async () => {
+        dispatch(fetchEditCart(item.id, quantity)).then(async () => {
+            console.log("INHERE!?!??!?!?!?!?!?")
+            console.log(quantity, "QUANTITY????????")
             const allItems = await dispatch(fetchGetCart());
-            // console.log(allItems, "ALLITEMS????")
-            const cartDetails = allItems?.Carts
-            // console.log(cartDetails, "CARTDETAILS??")
-            const editedItem = cartDetails?.find(editItem => editItem.id === item.id);
-            if(editedItem?.quantity > stock) editedItem.quantity = stock
+            const cartDetails = allItems.Carts
+            const editedItem = cartDetails.find(editItem => editItem.id === item.id);
+            if(editedItem.quantity > stock) editedItem.quantity = stock
             setRevenue(Number(editedItem?.quantity) * Number(editedItem?.Product.price));
         });
     }, [quantity]);
@@ -50,7 +46,6 @@ const CartItem = ({ item }) => {
             <div>
              <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
               <div className="other-people-message">
-                {console.log(item?.quantity, parseInt(quantity), "QUANTJSX!!!!!")}
                  {item?.quantity == stock && <div>You have reached the maximum stock for this product.</div>}
               </div>
               <button className='cart-item-remove-item-button' onClick={() => deleteCartItem()}> Remove</button>

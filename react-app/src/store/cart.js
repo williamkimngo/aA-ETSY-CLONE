@@ -14,10 +14,9 @@ const addCart = cart => ({
     cart
 })
 
-const updateCart = (id, quantity) => ({
+const updateCart = (cart) => ({
     type: UPDATE_CART,
-    id,
-    quantity
+    cart
 })
 
 const deleteCart = id => ({
@@ -33,6 +32,7 @@ export const fetchGetCart = () => async (dispatch) => {
     const res = await fetch('/api/cart/account');
     if (res.ok) {
         const data = await res.json()
+        console.log(data, "getcartDATA")
         dispatch(getCart(data))
         return data
     }
@@ -67,10 +67,10 @@ export const fetchEditCart = (id, quantity) => async (dispatch) => {
         body: JSON.stringify({ "quantity": quantity })
     })
     if (res.ok) {
-        const data = await res.json()
-        dispatch(updateCart(data))
-        return data
-    } else {   
+        const editCartItem = await res.json()
+        dispatch(updateCart(editCartItem))
+        return editCartItem
+    } else {
         const data = await res.json()
         return data.errors
     }
@@ -106,33 +106,33 @@ export const fetchCheckoutCart = () => async (dispatch) => {
 
 const cartReducer = (state = {}, action) => {
     switch (action.type) {
-        case GET_CART: {
-            const newState = {};
+        case GET_CART:
+            const newStateGet = {};
             // console.log(action.cart, "Hello???!?")
             action.cart.Carts.forEach(item => {
-                newState[item.id] = item
+                newStateGet[item.id] = item
             })
-            return newState
-        }
-        case ADD_CART: {
+            return newStateGet
+
+        case ADD_CART:
+            const newStateAdd = { ...state }
+            newStateAdd[action.cart.id] = action.cart
+            return newStateAdd
+
+        case UPDATE_CART:
             const newState = { ...state }
+            console.log(action.cart, "HELLLO?????")
             newState[action.cart.id] = action.cart
             return newState
-        }
-        case UPDATE_CART: {
-            const newState = { ...state }
-            // console.log(action.id, "HELLLO?????")
-            newState[action.id.quantity] = action.quantity
-            return newState
-        }
-        case DELETE_CART: {
-            const newState = { ...state }
-            delete newState[action.id]
-            return newState
-        }
-        case CHECKOUT_CART: {
+
+        case DELETE_CART:
+            const newStateDelete = { ...state }
+            delete newStateDelete[action.id]
+            return newStateDelete
+
+        case CHECKOUT_CART:
             return {}
-        }
+
         default:
             return state
     }
