@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchAllProducts } from '../../store/product';
 import './HomePage.css'
+import CreaterLinks from '../Footer';
 
 const ProductHome = () => {
     const dispatch = useDispatch()
@@ -101,7 +102,11 @@ const ProductHome = () => {
                     </div>
                 </div>
             </div>
+            <div className='footer-home-page'>
+            <CreaterLinks/>
+            </div>
         </div>
+
     )
 }
 

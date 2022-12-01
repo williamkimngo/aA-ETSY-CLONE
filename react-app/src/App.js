@@ -65,9 +65,6 @@ function App() {
         <Route path='/reviews/:reviewId/edit-review' exact={true} >
           <EditReviewForm />
         </Route>
-        {/* <Route path='/my-reviews' exact={true} >
-          <UserReviews />
-        </Route> */}
         <Route path='/cart' exact={true}>
             <Cart />
         </Route>
