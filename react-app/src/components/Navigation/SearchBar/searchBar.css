@@ -43,7 +43,6 @@
     background: none;
     outline: none;
     font-size: 16px;
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
     padding: 1.5px 20px;
     width: 100%;
     cursor: default;
@@ -70,7 +69,6 @@
   .search-header,
   .product-not-found-header {
     margin: 2rem auto 0;
-    font-family: GuardianEgypLight, Arial, Helvetica, sans-serif;
     font-size: 1.4rem;
     width: 1220px;
     box-sizing: border-box;
@@ -80,7 +78,6 @@
     box-sizing: border-box;
     margin: 1rem auto 0;
     width: 1220px;
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
   }
 
   .search-main {
@@ -97,7 +94,6 @@
   }
 
   .search-again-message {
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
     font-size: 0.85rem;
     margin-top: 0.5rem;
   }
@@ -108,7 +104,6 @@
     position: absolute;
     top: 30px;
     left: 28px;
-    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
     font-size: 0.7rem;
   }
 

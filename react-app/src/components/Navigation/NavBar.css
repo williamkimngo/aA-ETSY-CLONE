@@ -24,10 +24,11 @@ nav {
   margin: 0 5px;
   display: flex;
   align-items: center;
+  text-decoration: none;
 }
-.navBar-home:hover {
+/* .navBar-home:hover {
   background-color: gray;
-}
+} */
 
 
 
@@ -43,14 +44,19 @@ nav {
   align-items: center;
   padding: 12px;
   border-radius: 48%;
+  background-color: white;
 }
 
-/* .navBar-link-icon:hover,
-.navBar-link-profile:hover,
-.profile-btm-div:hover {
-  background-color: rgba(128, 128, 128, 0.095);
+
+.navBar-link-icon:hover{
+  background-color: #EFEFEF;
   cursor: pointer;
-} */
+  border-radius: 48%;
+}
+
+.navBar-link-icon img{
+  border-radius: 48%;
+}
 
 .navBar-link-profile {
   display: flex;
@@ -86,10 +92,11 @@ nav {
 }
 
 .navBar-link-cart:hover {
-  background-color: lightgray;
+  background-color: #EFEFEF;
   border-radius: 80%;
 }
-
+.navbar-profile-button .cartbubble,
+.navBar-link-icon .cartbubble,
 .cart-pic .cartbubble {
   visibility: hidden;
   width: 49px;
@@ -101,8 +108,24 @@ nav {
   position: absolute;
   z-index: 1;
   top: 100%;
-  margin-left: -60px;
 }
+
+.navbar-profile-button .cartbubble {
+  width: 70px;
+  margin-left: -2rem;
+  margin-top: 1rem;
+}
+
+.cart-pic .cartbubble {
+  margin-left: -3rem;
+}
+
+.navBar-link-icon .cartbubble {
+  width: 70px;
+  margin-left: -5rem;
+}
+.navbar-profile-button .cartbubble::after,
+.navBar-link-icon .cartbubble::after,
 .cart-pic .cartbubble::after {
   content: "";
   position: absolute;
@@ -114,7 +137,8 @@ nav {
   border-style: solid;
   border-color: transparent transparent black transparent;
 }
-
+.navbar-profile-button:hover .cartbubble,
+.navBar-link-icon:hover .cartbubble,
 .cart-pic:hover .cartbubble {
   visibility: visible;
   z-index: 3;

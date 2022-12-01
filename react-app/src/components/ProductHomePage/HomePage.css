@@ -81,7 +81,6 @@
 .category-name {
   position: relative;
   z-index: 2;
-  font-family: "Graphik Webfont", -apple-system, "Helvetica Neue", "Droid Sans", Arial, sans-serif;
   font-size: 1rem;
   margin: 0px 0px 6px;
   color: #222222;
@@ -146,7 +145,6 @@ grid-template-rows: repeat(4, 100px);
   padding: 4px;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.116);
-  font-family: GraphikMedium, Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
 }
@@ -372,8 +370,6 @@ justify-content: center;
   height: 25px;
   width: 55px;
   border-radius: 10px;
-  /* border: 1px solid rgba(128, 128, 128, 0.116); */
-  /* font-family: GraphikMedium, Arial, Helvetica, sans-serif; */
   font-size: 0.8rem;
   font-weight: 700;
   display: flex;

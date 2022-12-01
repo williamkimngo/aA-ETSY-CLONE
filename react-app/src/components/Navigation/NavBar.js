@@ -25,7 +25,7 @@ const NavBar = () => {
                         <>
                             <div className='navBar-link-icon'>
                             <NavLink to='/account' exact={true} activeClassName='active'>
-                  <img src="https://i.imgur.com/IBreHpQ.png" alt='myShop'></img>
+                  <img src="https://i.imgur.com/IBreHpQ.png" alt='myShop'></img><span class="cartbubble">Shop Manager</span>
                 </NavLink>
                             </div>
                             <div className='navBar-link-profile'>
@@ -34,7 +34,7 @@ const NavBar = () => {
                         </>
                         :
                         <>
-                            <div className='navBar-link sign-in'>
+                            <div className='navBar-link-sign-in'>
                                 <LoginFormModal />
                             </div>
                         </>

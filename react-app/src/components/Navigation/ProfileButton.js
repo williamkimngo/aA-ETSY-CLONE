@@ -29,6 +29,7 @@ const ProfileButton = ({user}) => {
     <div onClick={openMenu} className='navbar-profile-button'>
       <i className="fa-solid fa-user"></i>
       <i className="fa-solid fa-angle-down"></i>
+      <span class="cartbubble">Your Account</span>
     </div>
     {showMenu && <>
         <div className='profile-dropdown'>

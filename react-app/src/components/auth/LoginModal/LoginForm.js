@@ -45,7 +45,7 @@ const LoginForm = () => {
           ))}
         </div>
         <div className="login-field-outer">
-          <label className="login-label" htmlFor='email'>Email *</label>
+          <label className="login-label" htmlFor='email'>Email<span>*</span></label>
           <input
             className="login-input"
             name='email'
@@ -56,7 +56,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="login-field-outer">
-          <label className="login-label" htmlFor='password'>Password *</label>
+          <label className="login-label" htmlFor='password'>Password<span>*</span></label>
           <input
             className="login-input"
             name='password'
