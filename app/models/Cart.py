@@ -22,7 +22,7 @@ class Cart(db.Model):
             'userId': self.user_id,
             'productId': self.product_id,
             'orderId': self.order_id,
-            'quantity': self.quantity
+            'quantity': self.quantity,
         }
     def to_dict_current(self):
         return {

@@ -56,6 +56,7 @@ def checkout_cart_items():
 def edit_cart_item(cart_item_id):
   item = Cart.query.get(cart_item_id)
   form = CartForm()
+  print(item, "ROUTESITEM!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
   form["csrf_token"].data = request.cookies["csrf_token"]
 
   if item is None:
@@ -65,7 +66,7 @@ def edit_cart_item(cart_item_id):
     item.quantity = form.data["quantity"]
     item.order_id = 0
     db.session.commit()
-    return item.to_dict(), 200
+    return item.to_dict_current(), 200
   else:
       return {"errors" : validation_errors_to_error_messages(form.errors)}, 400
 

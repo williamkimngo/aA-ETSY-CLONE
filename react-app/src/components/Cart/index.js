@@ -11,20 +11,21 @@ const Cart = () => {
     const sessionUser = useSelector(state => state.session.user)
     const ObjCartItems = useSelector(state => state.cart)
     const cartItemsArr = Object.values(ObjCartItems)
-    console.log(cartItemsArr, "CARTITEMSARRRAY!!!!")
-    const [totalPrice, setTotalPrice] = useState(0)
+    console.log(ObjCartItems, "OBJCARTITEMS")
+    console.log(cartItemsArr, "CARTITEMSARR")
+    // const [totalPrice, setTotalPrice] = useState(0)
 
-    useEffect(() => {
+    // useEffect(() => {
+        let initalTotalPrice = 0
         if (cartItemsArr) {
-            let initalTotalPrice = 0
             for (let cartItem of cartItemsArr) {
 
-                initalTotalPrice += parseFloat(cartItem?.quantity) * parseFloat(cartItem?.Product?.price)
+                initalTotalPrice += (cartItem?.quantity) * (cartItem?.Product?.price)
                 // console.log(totalPrice, "TOTALPRICE?????")
-                setTotalPrice(initalTotalPrice)
+                // setTotalPrice(initalTotalPrice)
             }
         }
-    }, [cartItemsArr])
+    // }, [cartItemsArr])
 
 
     useEffect(() => {
@@ -45,16 +46,20 @@ const Cart = () => {
 
     return cartLoaded && (
         <div className="cart-container">
+            {console.log(cartItemsArr, "CARTITEMSARR IN RETURN")}
             {cartItemsArr?.length > 0 && <div className="cart-leftpart">
                 {cartItemsArr?.length > 0 && <h2 className="items-count-in-cart">{cartItemsArr?.length} item(s) in your cart</h2>}
                 {cartItemsArr?.length > 0 && cartItemsArr?.map((item, i) =>
+                <div>{console.log(item, i, "INDEXCART")}
+
                      <CartItem key={i} item={item} />
+                     </div>
                 )}
             </div>}
             {cartItemsArr?.length > 0 &&
                 <CheckOutCart
                     cartItems={cartItemsArr}
-                    totalPrice={totalPrice}
+                    initalTotalPrice={initalTotalPrice}
                 />
             }
             {!cartItemsArr?.length &&

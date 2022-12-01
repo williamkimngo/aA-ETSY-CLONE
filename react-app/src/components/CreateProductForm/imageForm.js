@@ -46,8 +46,10 @@ const ImgCreate = (productId) => {
     }
     return (
         <div className='createproduct-wrapper'>
-            <h1 className='createproduct-form-title'>Add Images</h1>
-            <div className='createproduct-title'>Upload at least one image to show your item's most important qualities.</div>
+            <div className="header-wrapper">
+                <h1 className='createproduct-form-title'>Create a product</h1>
+                <p>Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+            </div>
             <div className='img-product-errors'>
                 <ul>
                     {errors && errors.map((err) => (
@@ -55,37 +57,56 @@ const ImgCreate = (productId) => {
                     ))}
                 </ul>
             </div>
-            <div className='addImage-content'>
-                <form>
-                    <label> Image 1 (required)
+            <div className="createproduct-form">
+                <div className='createproduct-content'>
+                    <h3>Photos</h3>
+                    <p className="paragraph">Add as many photos as you can so buyers can see every detail.</p>
+                    <form className='createproduct-label'>
+                        <div className="left-side-create">
+                            <span className="createproduct-title">Photos* </span>
+                            <span className="createproduct-sub-title">Use up to three photos to show your item's most important qualities.</span>
+                            <ul className="createImg-sub-title"><span>Tips:</span>
+                                <li>Use natural light and no flash.</li>
+                                <li>Include a common object for scale.</li>
+                                <li>Show the item being held, worn, or used.</li>
+                                <li>Shoot against a clean, simple background.</li>
+                                <li>Add photos to your variations so buyers can see all their options.</li>
+                            </ul>
+                        </div>
+                        <div className="right-side-image-create">
+                        <label> Image 1 (required)
+                            <br></br>
+                            <input className='addImage-input'
+                                type="text"
+                                value={img1}
+                                required
+                                onChange={(e) => setimg1(e.target.value)}
+                            />
+
+                        </label>
+
                         <br></br>
-                        <input className='addImage-input'
-                            type="text"
-                            value={img1}
-                            required
-                            onChange={(e) => setimg1(e.target.value)}
-                        />
-                    </label>
-                    <br></br>
-                    <label>Image 2 (optional)
+                        <label>Image 2 (optional)
+                            <br></br>
+                            <input className='addImage-input'
+                                type="text"
+                                value={img2}
+                                onChange={(e) => setimg2(e.target.value)}
+                            />
+                        </label>
                         <br></br>
-                        <input className='addImage-input'
-                            type="text"
-                            value={img2}
-                            onChange={(e) => setimg2(e.target.value)}
-                        />
-                    </label>
-                    <br></br>
-                    <label>Image 3 (optional)
-                        <br></br>
-                        <input className='addImage-input'
-                            type="text"
-                            value={img3}
-                            onChange={(e) => setimg3(e.target.value)}
-                        />
-                    </label>
-                </form>
-                <button className="imgproduct-button" onClick={submitImage}>Submit</button>
+                        <label>Image 3 (optional)
+                            <br></br>
+                            <input className='addImage-input'
+                                type="text"
+                                value={img3}
+                                onChange={(e) => setimg3(e.target.value)}
+                            />
+                        </label>
+                        </div>
+                    </form>
+                    <button className="imgproduct-button" onClick={submitImage}>Submit</button>
+                </div>
             </div>
         </div>
     )
