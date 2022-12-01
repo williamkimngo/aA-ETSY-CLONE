@@ -66,6 +66,7 @@ const ProductPage = () => {
         return messageBase;
      }
 
+
     return (
         <div className='entire-product-container'>
             <div className='product-container'>
@@ -103,21 +104,11 @@ const ProductPage = () => {
                 </span>
                 </div>
 
-            {/* only show "create review" button to logged in user/ who has not left a review/ NON-seller */}
             <div>
                 {
                 sessionUser &&
                 !seller &&
                 !currentProduct?.reviewers?.includes(sessionUser.id) &&
-                // (<div>
-                //     <button
-                //         className="create-new-review-button"
-                //         onClick={()=>history.push(`/products/${productId}/new-review`)}
-                //     >
-                //         Create a new review
-                //         {/* <CreateReviewForm productId={productId}/> */}
-                //     </button>
-                // </div>)
                 <CreateReviewModal
                     productId={productId}
                     showNewReviewModal={reviewModal}
@@ -158,7 +149,7 @@ const ProductPage = () => {
 
             <div className="single-product-price">${Number(currentProduct?.price).toFixed(2)}</div>
 
-            <div className="single-product-quantity">quantity: {currentProduct?.quantity}</div>
+            <div className="single-product-quantity">Current Quantity: {currentProduct?.quantity}</div>
             <div className="single-product-quantity">
                 <select className="product-input-quantity" value={quantity} onChange={e => setQuantity(e.target.value)}>
                 {choices.map(option => (
@@ -168,13 +159,15 @@ const ProductPage = () => {
             </div>
             <div className="single-product-addtocart">
 
-                {currentUser ?
+                {currentUser === true ?
                               <button className="add-to-cart-button" type='button' variant='outlined'
                               disabled={currentProduct.quantity === 0}
                               onClick={addToCart}>
                               {getCartButtonMessage(currentProduct.quantity)}
                               </button>
-                : <button className="not-login-addtocart-button">Please log in to purchase</button>
+                : <button className="not-login-addtocart-button">{!sessionUser ?
+                    <button className="ternary-not-login-addtocart-button">Please log in to purchase</button>
+                    : "You cannot add your own product to your cart!"}</button>
                 }
 
           <div className="product-detail-award">
@@ -188,7 +181,7 @@ const ProductPage = () => {
           <div className="product-detail-truck">
           <i className="fa-solid fa-truck fa-2xl"></i>
             <div className="product-detail-text">
-              <span className="ajw">Hooray!</span> This item ships free to the US.
+              <span className="ajw">Hooray!</span> This item ships everywhere in the US.
             </div>
           </div>
 

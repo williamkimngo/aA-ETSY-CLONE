@@ -87,15 +87,14 @@
   .single-product-price{
     margin-top: 1rem;
     font-size: 1.4rem;
-    /* font-family: GraphikProduktRegular, Arial, Helvetica, sans-serif; */
+
     font-weight: bolder;
   }
-  /* ##########stock, cart,description,############### */
+
   .single-product-stock{
     margin-top: 50px
   }
   .single-product-quantity{
-    /* position: relative; */
     margin-top: 7px;
     width: stretch;
     height: fit-content;
@@ -125,7 +124,6 @@
     color: white;
     border-radius: 20px;
     border: none;
-    /* font-family: GraphikRegular, Arial, Helvetica, sans-serif; */
     font-size: 16px;
     margin-top: 30px;
     margin-bottom: 16px;
@@ -143,9 +141,18 @@
     border: none;
     border-radius: 20px;
   }
+  .ternary-not-login-addtocart-button{
+    cursor: not-allowed;
+    color: grey;
+    width: 500px;
+    /* height: 44px; */
+    font-size: 16px;
+    /* margin-top: 30px; */
+    border: none;
+    border-radius: 20px;
+  }
 
   .single-product-description{
-  /* font-family:'Courier New', Courier, monospace; */
   margin-bottom: 10px;
   font-weight: 800;
   margin-top: 30px;
@@ -154,7 +161,6 @@
   .single-product-description-content{
     width:100%;
     font-weight: 500;
-    /* font-family:'Courier New', Courier, monospace */
   }
 
   .product-detail-award,

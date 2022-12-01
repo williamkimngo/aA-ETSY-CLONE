@@ -27,7 +27,7 @@ const ProductHome = () => {
         <div className='entire-home-container'>
             <div>
                 {sessionUser ?
-                    <div className='home-welcome'>Welcome Back, <NavLink className="home-name" to={`/products/${sessionUser.id}`}>{sessionUser.firstName}</NavLink><div>!</div> </div>
+                    <div className='home-welcome'>Welcome Back, <NavLink className="home-name" to={`/account`}>{sessionUser.firstName}</NavLink><div>!</div> </div>
                     : <div className='home-welcome'> Welcome to Zesty!</div>
                 }
                 <div className='home-category-circles'>
