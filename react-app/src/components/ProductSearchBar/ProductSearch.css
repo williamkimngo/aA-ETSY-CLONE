@@ -1,5 +1,4 @@
 .search-sum {
-    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
     max-width: 97%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -19,7 +18,6 @@
   }
 
   .search-caption {
-    font-family: "Graphik Webfont",-apple-system,"Helvetica Neue","Droid Sans",Arial,sans-serif;
     font-size: 1.5rem;
     width: 100%;
     margin: 1rem 0;
@@ -50,7 +48,6 @@
   }
 
   .search-product-name {
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
     font-size: 0.9rem;
     width: 100%;
     overflow: hidden;
@@ -75,7 +72,6 @@
   }
 
   .search-product-num-reviews {
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #616161;
   }
@@ -85,14 +81,12 @@
   }
 
   .search-product-price {
-    font-family: GraphikRegular, Arial, Helvetica, sans-serif;
     font-size: 1.1rem;
     margin-bottom: 0.3rem;
     color: black;
   }
 
   .search-product-shop {
-    font-family: GraphikLight, Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #616161;
     margin-bottom: 0.8rem;
