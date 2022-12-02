@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, DecimalField, IntegerField, SubmitField, TextAreaField, SelectField
 from wtforms.validators import DataRequired, Length, NumberRange, InputRequired
 
-ZESTY = ["Orange", "Lemon", "Lime"]
+ZESTY = ["Orange", "Lemon", "Lime", "Grapefruit"]
 
 class ProductForm(FlaskForm):
     category = SelectField('category', choices=ZESTY, validators=[DataRequired()])

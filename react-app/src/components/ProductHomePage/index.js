@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { fetchAllProducts } from '../../store/product';
 import './HomePage.css'
 import CreaterLinks from '../Footer';
+import { resetProductsState } from '../../store/product';
 
 const ProductHome = () => {
     const dispatch = useDispatch()
@@ -21,9 +22,13 @@ const ProductHome = () => {
 
 
     useEffect(() => {
+        dispatch(resetProductsState())
         dispatch(fetchAllProducts(objProducts))
     }, [dispatch])
 
+    if(!productsArr) {
+        return null
+    }
     return (
         <div className='entire-home-container'>
             <div>

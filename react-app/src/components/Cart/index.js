@@ -13,24 +13,25 @@ const Cart = () => {
     const cartItemsArr = Object.values(ObjCartItems)
     console.log(ObjCartItems, "OBJCARTITEMS")
     console.log(cartItemsArr, "CARTITEMSARR")
-    // const [totalPrice, setTotalPrice] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
 
-    // useEffect(() => {
+    useEffect(() => {
         let initalTotalPrice = 0
         if (cartItemsArr) {
             for (let cartItem of cartItemsArr) {
 
                 initalTotalPrice += (cartItem?.quantity) * (cartItem?.Product?.price)
                 // console.log(totalPrice, "TOTALPRICE?????")
-                // setTotalPrice(initalTotalPrice)
+                setTotalPrice(initalTotalPrice)
             }
         }
-    // }, [cartItemsArr])
+    }, [cartItemsArr])
 
 
     useEffect(() => {
         (async () => {
             if (sessionUser) {
+
                 await dispatch(fetchGetCart())
                 setCartLoaded(true)
             }
@@ -59,7 +60,7 @@ const Cart = () => {
             {cartItemsArr?.length > 0 &&
                 <CheckOutCart
                     cartItems={cartItemsArr}
-                    initalTotalPrice={initalTotalPrice}
+                    totalPrice={totalPrice}
                 />
             }
             {!cartItemsArr?.length &&

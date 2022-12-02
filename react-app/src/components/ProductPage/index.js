@@ -7,6 +7,7 @@ import { AiFillStar } from "react-icons/ai"
 import ProductReviews from '../Reviews/productReviews';
 import CreateReviewModal from '../Reviews/ReviewModal';
 import { fetchAddCart } from '../../store/cart';
+import { resetProductsState } from '../../store/product';
 
 const ProductPage = () => {
     const history = useHistory()
@@ -25,6 +26,7 @@ const ProductPage = () => {
     let currentUser;
 
     useEffect(async () => {
+        dispatch(resetProductsState())
         dispatch(fetchSingleProduct(productId))
     }, [dispatch, productId, reviewsArr.length])
 
@@ -65,7 +67,9 @@ const ProductPage = () => {
         }
         return messageBase;
      }
-
+     if (!currentProduct) {
+        return null
+     }
 
     return (
         <div className='entire-product-container'>

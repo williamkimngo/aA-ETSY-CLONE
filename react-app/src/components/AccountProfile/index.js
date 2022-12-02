@@ -7,6 +7,7 @@ import UserProducts from "./UserProducts"
 // import UserReviews from "../Reviews/UserReviews"
 import CurrentUserReview from "../Reviews/CurrentUserReview"
 import { fetchGetUserReviews } from "../../store/review"
+import { resetProductsState } from "../../store/product"
 
 const AccountProfile = () => {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const AccountProfile = () => {
     const reviewsArr = Object.values(reviewsObj)
 
     useEffect(() => {
+        dispatch(resetProductsState())
         dispatch(fetchUserProducts())
         dispatch(fetchGetUserReviews())
     }, [dispatch, sessionUser, reviewsArr.length])

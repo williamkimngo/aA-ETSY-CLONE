@@ -6,6 +6,7 @@ const DELETE_PRODUCT = 'products/deleteproduct'
 const ADD_IMG = 'products/addimg'
 const ALL_USER_PRODUCTS = 'products/userproducts'
 const PRODUCT_SEARCH = 'products/productsearch'
+const RESET_PRODUCTS = '/products/resetproducts'
 
 //actions
 const getProducts = (products) => {
@@ -64,7 +65,17 @@ const productSearch = (products) => {
     }
 }
 
+export const resetProductsState = () => {
+    return {
+        type: RESET_PRODUCTS
+    }
+}
+
+
 // Thunks
+
+
+
 export const fetchAllProducts = () => async (dispatch) => {
     const res = await fetch('/api/products');
 
@@ -139,6 +150,7 @@ export const fetchImg = (url, productId) => async (dispatch) => {
     }
 }
 
+
 export const fetchUserProducts = () => async (dispatch) => {
     const res = await fetch('/api/products/account')
     console.log(res, "RES?????")
@@ -203,6 +215,11 @@ const productReducer = (state = initialState, action) => {
             action.products.Products.forEach(product => {
                 newState.searchProducts[product.id] = product
             })
+            return newState
+        case RESET_PRODUCTS:
+            newState = {...state}
+            newState.allProducts = {}
+            newState.singleProduct = {}
             return newState
         default:
             return state
