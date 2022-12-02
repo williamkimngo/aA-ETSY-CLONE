@@ -9,11 +9,12 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
     const userProduct = useSelector(state => state.products.allProducts[productId])
     const categories = ['Lemon', 'Orange', 'Lime', 'Grapefruit']
     const [name, setName] = useState(userProduct?.name)
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState(userProduct?.category)
     const [details, setDetails] = useState(userProduct?.details)
     const [price, setPrice] = useState(userProduct?.price)
     const [quantity, setQuantity] = useState(userProduct?.quantity)
     const [errors, setErrors] = useState([])
+
 
     useEffect(() => {
         dispatch(fetchUserProducts())
@@ -43,12 +44,13 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
         const res = await dispatch(editSingleProduct(data, productId))
         if (res){
             setShowEditForm(false)
+
         }
       }
       return (
         <div className='createproduct-wrapper'>
             <h1 className="createproduct-form-title">Edit your product</h1>
-                <p className="paragraph">Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+                <p className="paragraph">Edit details about your product.</p>
             <form className='createproduct-form' onSubmit={editHandle}>
                 <div className='createproduct-content'>
                 <h3>Listing Details</h3>
@@ -83,20 +85,20 @@ const ProductEditForm = ({productId, setShowEditForm }) => {
                             </div>
                             <div className="right-side-product-create">
                             <br></br>
-                            {errors?.map((error, i) => {
+                            {/* {errors?.map((error, i) => {
                                 if (error.split(":")[0] === 'Category')
                                     return (
                                         <div key={i} className='edit-product-errors'>•{error.split(":")[1]}</div>
                                     )
-                            })}
+                            })} */}
                             <select
-                                htmlFor='category'
+                                // htmlFor='category'
                                 name='category'
+                                value={category}
                                 className='createproduct-input-select'
-                                required
                                 onChange={(e) => setCategory(e.target.value)}
                             >
-                            <option disabled selected value={category}>-- Select a Category --</option>
+                            {/* <option disabled selected value={category}>-- Select a Category --</option> */}
                                 {categories.map((category) => {
                                     return (
                                         <option
