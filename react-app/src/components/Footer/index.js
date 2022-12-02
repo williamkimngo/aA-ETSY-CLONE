@@ -5,7 +5,7 @@ const CreaterLinks = () => {
     return (
         <div className="footer">
             <div className="github-links">
-                <a href="https://github.com/williamkimngo" target="_blank">
+                <a href="https://github.com/williamkimngo/zesty-etsy-clone" target="_blank">
                     <i class="fa-brands fa-github">
                         <div className="names-git">William Ngo</div>
                     </i>
