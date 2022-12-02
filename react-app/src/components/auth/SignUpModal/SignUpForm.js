@@ -14,8 +14,53 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [showSignIn, setShowSignIn] = useState(false);
 
+  const validate = () => {
+    const errors = [];
+
+    if (password.length === 0) {
+      errors.push("Please enter a password");
+    } else if (password.length > 20 || password.length < 6) {
+      errors.push("Password must be between 6 and 20 characters");
+    }
+
+    if (password !== repeatPassword) {
+      errors.push("Passwords don't match");
+    }
+
+    if (repeatPassword.length === 0) {
+      errors.push("Please confirm your password");
+    }
+
+    if (username.length === 0) {
+      errors.push("Please enter a username");
+    } else if (username.length < 4 || username.length > 30) {
+      errors.push("Username must be between 4 and 30 characters");
+    }
+
+    let emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.+-]+\.[a-z]{2,3}$/;
+
+    if (email.length === 0) {
+      errors.push("Please enter an email address");
+    } else if (email.length < 3 || email.length > 256) {
+      errors.push("Email must be between 3 and 255 characters");
+    } else if (!emailReg.test(email)) {
+      errors.push("Please enter a valid email");
+    }
+
+    if (errors.length > 0) setErrors(errors);
+    setErrors(errors)
+    return errors;
+  };
+
+
   const onSignUp = async (e) => {
-    e.preventDefault();
+    const errors = validate()
+    if(errors.length > 0) {
+      e.preventDefault()
+      setErrors(errors)
+      return errors
+    }
+    // e.preventDefault();
     if (password === repeatPassword) {
       const data = await dispatch(sessionActions.signUp(username, email, firstName, password));
       if (data) {
@@ -28,6 +73,8 @@ const SignUpForm = () => {
   const handleLogin =(e) =>{
     setShowSignIn(true);
   }
+
+
 
 
   return (

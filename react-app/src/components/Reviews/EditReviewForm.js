@@ -10,8 +10,8 @@ const EditReviewForm = ({myreview, showEditReview, setShowEditReview}) => {
   const history = useHistory()
 
   const [editReview, setEditReview] = useState(myreview.review)
-  const [editStars, setEditStars] = useState(myreview.stars)
-  const [rating, setStars] = useState(null)
+  const [editStars, setEditStars] = useState(myreview.ratings)
+  const [rating, setStars] = useState(myreview.ratings)
   const [errors, setErrors] = useState([])
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const reviewId = myreview?.id
