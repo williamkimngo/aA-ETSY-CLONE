@@ -67,7 +67,7 @@
   }
 
   .create-review-button:hover {
-    background: white;
-    border: 1px rgb(0, 0, 0) solid;
-    color:rgb(0, 0, 0);
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
+    color: white;
   }

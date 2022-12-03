@@ -82,6 +82,12 @@
   .my-single-review-date {
     color: rgba(126, 126, 126, 0.8);
     font-size: 13px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .product-delete-review {
+    padding-left: 0.5rem;
   }
 
   .my-single-review {
@@ -108,16 +114,33 @@
     /* margin: 3px 0px 20px 0px; */
     border: 1px rgb(0, 0, 0) solid;
     border-radius: 4px;
+    color: white;
+    background:  rgba(0, 0, 0, 0.878);
     /* background: rgb(241, 101, 34); */
-    background: rgb(0, 0, 0);
+  }
+
+  .delete-review-button {
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    /* padding: 3px 10px; */
+    /* margin: 3px 0px 20px 0px; */
+    border: 1px rgb(0, 0, 0) solid;
+    border-radius: 4px;
+    color: white;
+    background:  rgba(0, 0, 0, 0.878);
+  }
+
+  .delete-review-button:hover {
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
     color: white;
   }
 
   .review-button:hover {
-    background: white;
-    /* border: 1px rgb(241, 101, 34) solid; */
-    border: 1px rgb(0, 0, 0) solid;
-    color:rgb(0, 0, 0);
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
+    color: white;
     /* color:rgb(241, 101, 34); */
   }
   /*
@@ -201,6 +224,15 @@
     outline: none;
   }
 
+  .single-review-section {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid black;
+
+  }
+
+  .single-review-stars {
+    padding-top: 1rem;
+  }
   .edit-review-form .form-input-break{
     background-color: rgb(200, 200, 200);
     height:1px;
@@ -245,9 +277,9 @@
   }
 
   .edit-review-form .modal-submit-button:hover {
-    background: white;
-    border: 1px rgb(0, 0, 0) solid;
-    color:rgb(0, 0, 0);
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
+    color: white;
   }
 
 
@@ -421,9 +453,9 @@
   }
 
   .create-review-modal-whole .modal-submit-button:hover {
-    background: white;
-    border: 1px rgb(0, 0, 0) solid;
-    color:rgb(0, 0, 0);
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
+    color: white;
   }
 
   .create-review-modal-whole  {

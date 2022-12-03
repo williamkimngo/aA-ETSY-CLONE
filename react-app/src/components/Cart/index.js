@@ -57,12 +57,14 @@ const Cart = () => {
                      </div>
                 )}
             </div>}
+            <div className="right-side-cart">
             {cartItemsArr?.length > 0 &&
                 <CheckOutCart
                     cartItems={cartItemsArr}
                     totalPrice={totalPrice}
                 />
             }
+            </div>
             {!cartItemsArr?.length &&
                 <div className="cart-empty-message">
                     <h1 className="cart-is-empty">Your cart is empty.</h1>

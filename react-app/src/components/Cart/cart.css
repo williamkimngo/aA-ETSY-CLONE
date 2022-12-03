@@ -1,8 +1,10 @@
 .cart-container{
     display: flex;
-    justify-content: space-around;
+    justify-content:center;
     width: 100%;
     align-items: top;
+    /* margin-left: 5.5rem; */
+    box-sizing: border-box;
 
 }
 
@@ -10,8 +12,9 @@
 .cart-leftpart{
     display: flex;
     flex-direction: column;
-    width: 60%;
-    align-items: flex-start
+    width: 850px;
+    align-items: flex-start;
+    /* margin-left: 43rem; */
 
 }
 
@@ -23,6 +26,17 @@
 
 }
 
+.right-partof-leftpart {
+    max-width: 260px;
+    overflow-wrap: break-word;
+
+}
+
+.right-side-cart {
+    display: flex;
+    flex-direction: column;
+
+}
 
 
 .cart-empty-message{
@@ -84,7 +98,7 @@
 }
 
 .cart-item-name{
-    width: 400px;
+    width: 240px;
     height: 60px;
     position: relative;
     left:15px;
@@ -165,13 +179,14 @@
     width: fit-content;
     height: fit-content;
     top: 20px;
+    left: 20px;
 }
 
 
 /* ###############Cart Total Card############## */
 .cart-checkout-card{
     display: flex;
-    width: 30%;
+    width: 300px;
     position: sticky;
     top: 20px;
     flex-direction: column;
@@ -226,9 +241,10 @@
 }
 
 .cart-checkout-button:hover{
-    transform:scale(1.1,1.1);
-    /* -webkit-transform:scale(1.3,1.3);
-    -moz-transform:scale(1.3,1.3); */
+    transform:scale(1.02,1.02);
+    background-color: #3C3C3C;
+    border: 1px  rgba(0, 0, 0, 0.878) solid;
+    color: white;
 }
 .other-people-message{
     color: rgb(241, 101, 34);
