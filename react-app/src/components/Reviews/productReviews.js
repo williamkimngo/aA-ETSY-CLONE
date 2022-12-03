@@ -9,6 +9,7 @@ const ProductReviews = ({productId, user}) => {
     const objProductReviews = useSelector(state => state.reviews.product)
     const productReviewsArr = Object.values(objProductReviews)
     const [editReview, setEditReview] = useState(false)
+    const sessionUser = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(fetchGetProductReviews(productId))
@@ -35,6 +36,11 @@ const ProductReviews = ({productId, user}) => {
             <div className="single-review-name" >{review.User.first_name}</div>
             <div className="my-single-review-date">
               {new Date(review?.createdAt).toString().slice(3,-42)}
+              <div className="product-delete-review">
+              {review?.userId === sessionUser?.id ?
+              // {console.log(review.userId, sessionUser.id, "USER????????")}
+              <button className="delete-review-button" onClick={async () => {await dispatch(thunkDeleteReview(review.id)); await dispatch(fetchGetProductReviews(productId))}} > Delete Review </button>:null}
+            </div>
             </div>
             </div>
 

@@ -43,7 +43,7 @@ const CartItem = ({ item }) => {
             <div className="cart-image-container" onClick={() => history.push(`/products/${item.Product.id}`)}>
                 <img src={item?.Product?.previewImage} alt='product' />
             </div>
-            <div>
+            <div className="right-partof-leftpart">
              <div className="cart-item-name" onClick={() => history.push(`/products/${item.Product.id}`)}>{item?.Product?.name}</div>
               <div className="other-people-message">
                  {item?.quantity == stock && <div>You have reached the maximum stock for this product.</div>}
