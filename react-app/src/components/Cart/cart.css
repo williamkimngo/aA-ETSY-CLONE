@@ -32,6 +32,12 @@
 
 }
 
+.login-cart {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    margin-top: 150px;
+}
 .right-side-cart {
     display: flex;
     flex-direction: column;

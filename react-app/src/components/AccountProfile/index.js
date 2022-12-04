@@ -26,9 +26,9 @@ const AccountProfile = () => {
     if (!sessionUser) {
         return <Redirect to="/" />
     }
-    if (!productsArr.length) {
-        return null
-    }
+    // if (!productsArr.length) {
+    //     return null
+    // }
     return (
         <div className="userproducts-container">
             <div className="userproducts-upper">
@@ -46,6 +46,7 @@ const AccountProfile = () => {
 
             <div className="userproducts-outer">
                 <h2>Your Products</h2>
+                {productsArr.length < 1 && (<h4 className="no-products-owned">You currently do not own any products! </h4>)}
                 <div className="userproducts-inner">
 
                     {productsArr.map((product) => (
@@ -57,6 +58,7 @@ const AccountProfile = () => {
                     <div className="my-reviews-main">
                         <div className="my-reviews-outer">
                         <h2>Your Reviews</h2>
+                        {reviewsArr.length < 1 && (<h4 className="no-products-owned">You currently do not have any reviews!</h4>)}
                             <div className="my-reviews-inner">
                                 {
                                     reviewsArr.map((review) => (
