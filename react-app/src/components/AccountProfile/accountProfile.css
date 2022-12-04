@@ -11,6 +11,7 @@
     background-color: #FDEBD2; */
     position: absolute;
     left: 0;
+    /* right: 3rem; */
     top: 7.5rem;
     width: 100%;
     min-height: 100px;
@@ -69,7 +70,11 @@
     /* z-index: 5; */
   }
 
-
+.no-products-owned {
+  display: flex;
+  justify-content: center;
+  margin-right: 8rem;
+}
 
   .userproducts-inner {
     display: grid;
