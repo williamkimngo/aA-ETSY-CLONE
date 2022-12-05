@@ -1,4 +1,4 @@
-# Zesty ![image](https://i.imgur.com/764zj91t.jpg)
+# ![image](https://i.imgur.com/764zj91t.jpg)
 
 ***
 
