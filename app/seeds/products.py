@@ -65,7 +65,75 @@ def seed_products():
         category="Lemon",
         quantity=9
     )
-    
+    orangeAccessory1 = Product(
+        seller_id=4,
+        name="Mandarin bag charm from polymer clay Orange fruit keychain Cute citrus charms",
+        details="🍊 Mandarin with leaves from polymer clay. 🍊 One product consists of 3 or 5 mandarins and 2 green leaves.",
+        price="17.00",
+        category="Orange",
+        quantity=10
+    )
+    orangeAccessory10 = Product(
+        seller_id=5,
+        name="By the Shed Orange Fruit Keyring - Vegetable - Fruit - Sunshine, OJ, Orange Juice - Garden Gift - Quirky - Summer Citrus - Key Chain, Charm",
+        details="Handcrafted bead made from polymer clay glossed with a clear varnish, inspired by thoughts of the good life and attached to an antique bronze key chain. Add a hint of summer to your keys with this Orange Keyring!",
+        price="11.50",
+        category="Orange",
+        quantity=10
+    )
+    lemoncup11 = Product(
+        seller_id=1,
+        name="Lemon Mug I Just Really Love Lemons, Okay? Lemon Lover Mug Funny Lemon Gift Love Lemon Decor Art Funny Food Pun Mug Cute Lemon Gift",
+        details="Add a little pop of color to your morning routine with this stylish accent mug. Made with a premium hard coat that provides crisp and vibrant color reproduction, this mug is sure to look sharp in your hands for years.",
+        price="15.00",
+        category="Lemon",
+        quantity=10
+    )
+    lemonplush12 = Product(
+        seller_id=2,
+        name="Lemon, Crochet Lemon, Lemon Plush, Play Food, Kawaii, Sour Lemon, Amigurumi, Handmade, Crochet, Lemonade Squad, Lemon Decor, Fruit Plush",
+        details="Meet the lemons: one is agreeable, but the other is a total skeptic. Which one will you choose? Or both? These small plushies are 3.5 inches long by 2.5 inches tall and finished off with a leaf ",
+        price="10.00",
+        category="Lemon",
+        quantity=10
+    )
+    limechain13 = Product(
+        seller_id=3,
+        name="By the Shed Lime Keyring - Green - Vegetable - Fruit - Allotment - Gardening - Garden Gift - Quirky - Summer Citrus - Key Chain, Charm",
+        details="Add a hint of summer to your keys with this Lime Keyring! ",
+        price="11.52",
+        category="Lime",
+        quantity=10
+    )
+    limeearring14 = Product(
+        seller_id=4,
+        name="Lime earrings, glass Lime drop earrings, food earrings, fruit earrings",
+        details="glass Lime drop earrings with cute white flower and green leaf",
+        price="15.80",
+        category="Lime",
+        quantity=10
+    )
+    grapefruitsoap15 = Product(
+        seller_id=5,
+        name="Grapefruit Bar Soap, natural skincare",
+        details="Made without harmful ingredients so that your skin gets the tlc that it deserves. Best when paired with our grapefruit glow body butter and Turmeric body polish.",
+        price="4.80",
+        category="Grapefruit",
+        quantity=10
+    )
+    grapefruitpic16 = Product(
+        seller_id=1,
+        name="Grapefruit Still Life Print | Colorful Fruit Painting | Vintage Midcentury Modern Decor | Kitchen Wall Art | Citrus Poster",
+        details="This high-quality fine art giclee print captures textures and detail. Museum-quality posters made on thick and durable matte paper.",
+        price="25",
+        category="Grapefruit",
+        quantity=10
+    )
+
+
+
+
+
 
 
 
@@ -77,6 +145,15 @@ def seed_products():
     db.session.add(limeShirt2)
     db.session.add(lemonShirt2)
     db.session.add(orangeShirt2)
+
+    db.session.add(orangeAccessory1)
+    db.session.add(orangeAccessory10)
+    db.session.add(lemoncup11)
+    db.session.add(lemonplush12)
+    db.session.add(limechain13)
+    db.session.add(limeearring14)
+    db.session.add(grapefruitsoap15)
+    db.session.add(grapefruitpic16)
     db.session.commit()
 
 def undo_products():
