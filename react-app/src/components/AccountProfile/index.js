@@ -46,15 +46,14 @@ const AccountProfile = () => {
 
             <div className="userproducts-outer">
                 <h2>Your Products</h2>
-                {/* {productsArr.length < 1 ? (<h4 className="no-products-owned">You currently do not own any products! </h4>) : */}
+                {productsArr.length < 1 ? (<h4 className="no-products-owned">You currently do not own any products! </h4>) :
                 <div className="userproducts-inner">
 
                 {productsArr.map((product) => (
                     <UserProducts key={product.id} product={product} />
                 ))
                 }
-            </div>
-            {/* } */}
+            </div>}
 
                 <div className="userproducts-review-bottom">
                     <div className="my-reviews-main">
