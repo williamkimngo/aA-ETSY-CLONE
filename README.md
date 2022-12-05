@@ -2,7 +2,7 @@
 
 ***
 
-Zesty is a full stack application clone with features and design inspired by [Etsy][https://www.etsy.com/]. Zesty can be used to find/sell products that fit the Zesty/Citrus theme. 
+Zesty is a full stack application clone with features and design inspired by [Etsy](https://www.etsy.com/). Zesty can be used to find/sell products that fit the Zesty/Citrus theme. 
 
 Visit [Zesty](https://aa-etsy-clone.onrender.com) to find/sell products! 
 
