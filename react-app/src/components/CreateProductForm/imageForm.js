@@ -48,7 +48,7 @@ const ImgCreate = (productId) => {
         <div className='createproduct-wrapper'>
             <div className="header-wrapper">
                 <h1 className='createproduct-form-title'>Create a product</h1>
-                <p>Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+                <p>Add photos about your product. You will not be able to edit your images once you submit! </p>
             </div>
             <div className='img-product-errors'>
                 <ul>

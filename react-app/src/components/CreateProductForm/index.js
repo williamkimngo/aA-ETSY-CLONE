@@ -60,7 +60,7 @@ const CreateProduct = () => {
             <div className='createproduct-wrapper'>
                 <div className="header-wrapper">
                 <h1 className="createproduct-form-title">Create a product</h1>
-                <p className="paragraph">Add some photos and details about your product. Fill out what you can for now, you'll be able to edit this later.</p>
+                <p className="paragraph">Add some details about your product. Fill out what you can for now, you'll be able to edit the listing details later.</p>
                 </div>
                 <form className='createproduct-form' onSubmit={submitCreate}>
                     {/* <div className='createproduct-errors'>
