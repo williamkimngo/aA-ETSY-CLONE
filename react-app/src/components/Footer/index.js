@@ -12,7 +12,7 @@ const CreaterLinks = () => {
                 </a>
             </div>
             <div className="github-links">
-                <a href='https://www.linkedin.com/in/william-ngo-005950254/' target="_blank">
+                <a href='https://www.linkedin.com/in/williamkimngo/' target="_blank">
                     <i class="fab fa-linkedin-in">
                         <div className="names-git">William Ngo</div>
                     </i>

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../store/product";
 import './createProductForm.css'
 import ImgCreate from "./imageForm";
+import UploadPicture from "./awsimageForm";
 
 const CreateProduct = () => {
     const dispatch = useDispatch()
@@ -207,7 +208,8 @@ const CreateProduct = () => {
             }
             {page === 1 &&
                 <div className='main-shop-outer'>
-                <ImgCreate productId={productId} />
+                {/* <ImgCreate productId={productId} /> */}
+                <UploadPicture productId={productId} />
                 </div>
             }
         </div>

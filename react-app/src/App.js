@@ -19,6 +19,7 @@ import AccountProfile from './components/AccountProfile';
 import SearchProducts from './components/ProductSearchBar';
 
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
