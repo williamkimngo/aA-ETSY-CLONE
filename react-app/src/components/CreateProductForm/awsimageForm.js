@@ -39,7 +39,7 @@ const UploadPicture = (productId) => {
 
     const updateImage = (e) => {
         const file = e.target.files[0];
-        console.log(file, "FILES IN FRONTEND???")
+        // console.log(file, "FILES IN FRONTEND???")
         setImage(file);
     }
 
