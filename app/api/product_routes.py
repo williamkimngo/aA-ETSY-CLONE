@@ -5,6 +5,8 @@ from app.forms import ProductForm, ImageForm, ReviewForm, CartForm
 from datetime import datetime
 import random
 from .auth_routes import validation_errors_to_error_messages
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 product_routes = Blueprint('products', __name__)
 
@@ -137,21 +139,64 @@ def add_product_image(product_id):
   Add image to product when creating a product
   """
   product = Product.query.get(product_id)
-  form = ImageForm()
-  form['csrf_token'].data = request.cookies['csrf_token']
+  # form = ImageForm()
+  # form['csrf_token'].data = request.cookies['csrf_token']
   if product is None:
     return {"errors" : "Product couldn't be found"}, 404
   if product.seller_id != current_user.id:
     return {"errors" : "You are not the seller of this product"}, 403
-  if form.validate_on_submit():
-    new_image = Image(
-      url=form.data["url"],
-      product_id = product_id
-    )
-    db.session.add(new_image)
-    db.session.commit()
-    return new_image.to_dict(), 200
-  return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+  image = request.files["image"]
+
+  image.filename = get_unique_filename(image.filename)
+  upload = upload_file_to_s3(image)
+
+  if "url" not in upload:
+        print("URLHITTING???")
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+
+    # flask_login allows us to get the current user from the request
+  # print(url, "UPLOADED IMAGED???")
+  data = request.form
+  url = upload["url"]
+  new_image = Image(url=url, product_id=product.id)
+
+  # db.session.add(new_image)
+  # db.session.commit()
+  # return {"url": url}
+  # if form.validate_on_submit():
+  #   new_image = Image(
+  #     url=form.data["url"],
+  #     product_id = product_id
+  #   )
+  db.session.add(new_image)
+  db.session.commit()
+  return new_image.to_dict(), 200
+# print(form.errors, "FORMERROS???")
+  # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+# def upload_image():
+#     form = ImageForm()
+#     image = get_unique_filename(form.data["url"])
+#     print(image, "UPLOADED IMAGED???")
+
+#     upload = upload_file_to_s3(image)
+
+#     if "url" not in upload:
+#         # if the dictionary doesn't have a url key
+#         # it means that there was an error when we tried to upload
+#         # so we send back that error message
+#         return upload, 400
+
+#     url = upload["url"]
+#     # flask_login allows us to get the current user from the request
+#     new_image = Image(user=current_user, url=url)
+#     db.session.add(new_image)
+#     db.session.commit()
+#     return {"url": url}
 
 
 @product_routes.route("/<int:product_id>", methods=["PUT"])
