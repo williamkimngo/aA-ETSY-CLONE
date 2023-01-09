@@ -139,8 +139,7 @@ def add_product_image(product_id):
   Add image to product when creating a product
   """
   product = Product.query.get(product_id)
-  # form = ImageForm()
-  # form['csrf_token'].data = request.cookies['csrf_token']
+
   if product is None:
     return {"errors" : "Product couldn't be found"}, 404
   if product.seller_id != current_user.id:
@@ -154,6 +153,7 @@ def add_product_image(product_id):
   if "url" not in upload:
         print("URLHITTING???")
 
+
         return upload, 400
 
 
@@ -161,9 +161,11 @@ def add_product_image(product_id):
   url = upload["url"]
   new_image = Image(url=url, product_id=product.id)
 
+
   db.session.add(new_image)
   db.session.commit()
   return new_image.to_dict(), 200
+
 
 
 @product_routes.route("/<int:product_id>", methods=["PUT"])
