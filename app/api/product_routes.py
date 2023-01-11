@@ -153,6 +153,7 @@ def add_product_image(product_id):
   if "url" not in upload:
         print("URLHITTING???")
 
+
         return upload, 400
 
 
