@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { fetchAllProducts } from '../../store/product';
 import './HomePage.css'
-import Footer from '../Footer';
+// import Footer from '../Footer';
 import { resetProductsState } from '../../store/product';
 
 const ProductHome = () => {
@@ -108,7 +108,7 @@ const ProductHome = () => {
                 </div>
             </div>
             <div className='footer-home-page'>
-            <Footer/>
+            {/* <Footer/> */}
             </div>
         </div>
 

@@ -17,6 +17,7 @@ import Cart from './components/Cart';
 import CreateProduct from './components/CreateProductForm';
 import AccountProfile from './components/AccountProfile';
 import SearchProducts from './components/ProductSearchBar';
+import Footer from './components/Footer'
 
 
 
@@ -77,7 +78,9 @@ function App() {
         </ProtectedRoute>
 
       </Switch>
+      <Footer />
     </BrowserRouter>
+
   );
 }
 
