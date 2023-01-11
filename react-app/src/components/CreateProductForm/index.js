@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addProduct } from "../../store/product";
 import './createProductForm.css'
-import ImgCreate from "./imageForm";
+
 import UploadPicture from "./awsimageForm";
 
 const CreateProduct = () => {
